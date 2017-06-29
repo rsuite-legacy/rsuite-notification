@@ -10,14 +10,11 @@ const getUid = () => {
 };
 
 const propTypes = {
-  prefixCls: PropTypes.string,
-  transitionName: PropTypes.string,
   animation: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   style: PropTypes.object
 };
 
 const defaultProps = {
-  prefixCls: 'rsuite-notification',
   animation: 'move-up',
   style: {
     top: '50px',
@@ -29,6 +26,7 @@ class Notification extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      prefixCls: 'rsuite-notifation',
       notices: []
     };
   }
@@ -52,18 +50,18 @@ class Notification extends Component {
   }
 
   render() {
-    const { notices } = this.state;
+    const { notices, prefixCls } = this.state;
 
     const noticeNodes = notices.map((notice) => {
       return <Notice
-        prefixCls={this.props.prefixCls}
+        prefixCls={this.state.prefixCls}
         {...notice}
         onClose={chain(this.remove.bind(null, notice.key), notice.onClose)}
       />;
     });
 
     const className = {
-      [props.prefixCls]: true,
+      [prefixCls]: true,
       [className]: !!props.className
     };
 
