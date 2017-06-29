@@ -11,21 +11,17 @@
 .@{notificationPrefixCls} {
   position: fixed;
   z-index: 1000;
-
   &-notice {
-    padding: 7px 20px 7px 10px;
-    border-radius: 3px 3px;
-    border: 1px solid #999;;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border: 0px solid rgba(0, 0, 0, 0);;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.28) !important;
+    padding: 10px 20px;
+    border: 0px solid rgba(0, 0, 0, 0);
     background: #fff;
     display: block;
     width: auto;
-    line-height: 1.5;
     vertical-align: middle;
     position: relative;
-    margin: 10px 0;
-
+    right: 50%;
+    margin: 10px;
     &-closable {
       padding-right: 20px;
     }
@@ -34,7 +30,6 @@
       position: absolute;
       right: 5px;
       top: 3px;
-      color: #000;
       cursor: pointer;
       outline: none;
       font-size: 16px;
@@ -48,36 +43,12 @@
       &-x:after {
         content: '×';
       }
-
-      &:hover {
-        opacity: 1;
-        filter: alpha(opacity=100);
-        text-decoration: none;
-      }
     }
   }
   &-notice.move-up-leave.move-up-leave-active {
     animation-name: fadeInDownBig;
     animation-duration: 1s;
   }
-}
-
-@keyframes fadeInDownBig {
-  from {
-    opacity: 0;
-    transform: translate3d(0, -2000px, 0);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.notification{
-    box-shadow:0 2px 3px rgba(0, 0, 0, 0.28) !important;
-    border-radius:0 !important;
-    border-top: 0 !important;
     &-info{
         background-color: @color-notification-info-bg !important;
         .notification-title{
@@ -105,4 +76,16 @@
             color: @color-notification-info-font !important;
         }
     }
+}
+
+@keyframes fadeInDownBig {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -2000px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
