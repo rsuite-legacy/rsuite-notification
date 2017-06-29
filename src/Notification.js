@@ -42,9 +42,10 @@ class Notification extends Component {
     return transitionName;
   }
 
-  add = (notice) => {
+  add = (notice, type) => {
     const { notices } = this.state;
     const key = notice.key = notice.key || getUid();
+    notice.type = type;
     if (!notices.filter(notice => notice.key === key).length) {
       this.setState({
         notices: notices.concat(notice)
@@ -106,6 +107,15 @@ Notification.newInstance = function newNotificationInstance(properties) {
   const notificationComponent = ReactDOM.render(<Notification {...props} />, div);
 
   return {
+    success(noticeProps) {
+      notificationComponent.add(noticeProps, 'success');
+    },
+    error(noticeProps) {
+      notificationComponent.add(noticeProps, 'error');
+    },
+    info(noticeProps) {
+      notificationComponent.add(noticeProps, 'info');
+    },
     notice(noticeProps) {
       notificationComponent.add(noticeProps);
     },

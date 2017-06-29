@@ -39,20 +39,21 @@ class Notice extends Component {
   }
 
   render() {
-    const { prefixCls, closable, className, content, style } = this.props;
+    const { prefixCls, closable, className, content, style, type } = this.props;
     const componentClass = `${prefixCls}-notice`;
     const classNames = {
       [`${componentClass}`]: true,
       [`${componentClass}-closable`]: closable,
-      [className]: !!className
+      [className]: !!className,
+      [`${prefixCls}-${type}`]: !!type
     };
 
     return (
       <div className={classnames(classNames)} style={style}>
         <div className={`${componentClass}-content`}>{content}</div>
-        {closable && <a onClick={this.close} className={`${componentClass}-close`}>
+        {closable && <div onClick={this.close} className={`${componentClass}-close`}>
           <span className={`${componentClass}-close-x`}></span>
-        </a>}
+        </div>}
       </div>
     );
   }
