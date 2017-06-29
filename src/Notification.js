@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import chain from 'createChainedFunction';
+import chain from './utils/createChainedFunction';
+import Animate from 'rc-animate';
+import classnames from 'classnames';
 import Notice from './Notice';
 
 let id = 0;
@@ -17,7 +19,7 @@ const propTypes = {
 const defaultProps = {
   animation: 'move-up',
   style: {
-    top: '50px',
+    top: '5px',
     left: '50%'
   }
 };
@@ -26,9 +28,18 @@ class Notification extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      prefixCls: 'rsuite-notifation',
+      prefixCls: 'rsuite-notification',
       notices: []
     };
+  }
+
+  getTransitionName() {
+    const props = this.props;
+    let transitionName = props.transitionName;
+    if (!transitionName && props.animation) {
+      transitionName = `${this.state.prefixCls}-${props.animation}`;
+    }
+    return transitionName;
   }
 
   add = (notice) => {
@@ -51,6 +62,7 @@ class Notification extends Component {
 
   render() {
     const { notices, prefixCls } = this.state;
+    const { className, style } = this.props;
 
     const noticeNodes = notices.map((notice) => {
       return <Notice
@@ -60,14 +72,18 @@ class Notification extends Component {
       />;
     });
 
-    const className = {
+    const classNames = {
       [prefixCls]: true,
-      [className]: !!props.className
+      [className]: !!className
     };
+    const animateProps = {};
+    if (this.state.notices.length <= 1) {
+      animateProps.component = '';
+    }
 
     return (
-      <div className={className} style={props.style}>
-        {noticeNodes}
+      <div className={classnames(classNames)} style={style}>
+        <Animate transitionName={this.getTransitionName()} {...animateProps} >{noticeNodes}</Animate>
       </div>
     );
   }
