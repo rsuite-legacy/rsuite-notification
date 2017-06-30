@@ -62,7 +62,7 @@ class Notification extends Component {
 
   render() {
     const { notices, prefixCls } = this.state;
-    const { className, style } = this.props;
+    const { className, top } = this.props;
 
     const noticeNodes = notices.map((notice) => {
       return <Notice
@@ -82,7 +82,7 @@ class Notification extends Component {
     }
 
     return (
-      <div className={classnames(classNames)} style={style}>
+      <div className={classnames(classNames)} style={{ top: top }}>
         <Animate transitionName={this.getTransitionName()} {...animateProps} >{noticeNodes}</Animate>
       </div>
     );
@@ -110,7 +110,7 @@ Notification.newInstance = function newNotificationInstance(properties) {
       notificationComponent.add(noticeProps);
     },
     remove(key) {
-      notificationComponent.remove(key) ;
+      notificationComponent.remove(key);
     },
     component: notificationComponent,
     destroy() {

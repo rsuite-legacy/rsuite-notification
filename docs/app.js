@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Alert } from '../src/index';
 import '../src/less/index.less';
-
+Alert.config({
+  top: 30,
+  duration: 5
+});
 
 class App extends Component {
 
