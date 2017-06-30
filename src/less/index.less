@@ -11,17 +11,23 @@
 .@{notificationPrefixCls} {
   position: fixed;
   z-index: 1000;
+  &-notification{
+    width: 320px;
+  }
   &-notice {
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.28) !important;
     padding: 10px 20px;
     border: 0px solid rgba(0, 0, 0, 0);
     background: #fff;
     display: block;
-    width: auto;
     vertical-align: middle;
     position: relative;
     right: 50%;
     margin: 10px;
+    &-content{
+      padding: 0 10px 0 5px;
+    }
+
     &-closable {
       padding-right: 20px;
     }
@@ -50,30 +56,30 @@
     animation-duration: 1s;
   }
     &-info{
-        background-color: @color-notification-info-bg !important;
-        .notification-title{
-            color: @color-notification-info-font !important;
+        background-color: @color-notification-info-bg ;
+        .@{notificationPrefixCls}-title{
+          color: @color-notification-info-font ;
         }
     }
 
     &-error{
-        background-color: @color-notification-error-bg !important;
-        .notification-title{
-            color: @color-notification-error-font !important;
+        background-color: @color-notification-error-bg;
+        .@{notificationPrefixCls}-title{
+          color: @color-notification-error-font;
         }
     }
 
     &-success{
-        background-color: @color-notification-success-bg !important;
-        .notification-title{
-            color: @color-notification-success-font !important;
+        background-color: @color-notification-success-bg ;
+        .@{notificationPrefixCls}-title{
+          color: @color-notification-success-font;
         }
     }
 
     &-info{
-        background-color: @color-notification-info-bg !important;
-        .notification-title{
-            color: @color-notification-info-font !important;
+        background-color: @color-notification-info-bg;
+        .@{notificationPrefixCls}-title{
+          color: @color-notification-info-font;
         }
     }
 }

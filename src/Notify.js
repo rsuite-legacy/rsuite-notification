@@ -120,7 +120,7 @@ Notification.newInstance = function newNotificationInstance(properties) {
       notificationComponent.add(noticeProps);
     },
     remove(key) {
-      notificationComponent.remove(key);
+      notificationComponent.remove(key) ;
     },
     component: notificationComponent,
     destroy() {

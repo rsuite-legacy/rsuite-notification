@@ -27,13 +27,31 @@ class App extends Component {
       closable: true
     });
   }
+  handleNotification = () => {
+    notification.success({
+      title: 'Notificition',
+      content: 'long long long long long error messagelong long long long long error messagelong long long long long error messagelong long long long long error messagelong long long long long error message',
+      duration: null,
+      closable: true
+    });
+  }
 
   render() {
     return (
       <div className="doc-page">
-        <button onClick={this.handleSuccess}>success</button>
-        <button onClick={this.handleError}>error</button>
-        <button onClick={this.handleInfo}>info</button>
+        <section>
+          <h2>Alert</h2>
+          <button onClick={this.handleSuccess}>success</button>
+          <button onClick={this.handleError}>error</button>
+          <button onClick={this.handleInfo}>info</button>
+        </section>
+        <section>
+          <h2>Notification</h2>
+          <button onClick={this.handleNotifiySuccess}>success</button>
+          <button onClick={this.handleNotifyError}>error</button>
+          <button onClick={this.handleNotifyInfo}>info</button>
+        </section>
+
       </div>
     );
   }
