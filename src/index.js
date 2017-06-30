@@ -1,3 +1,3 @@
-
-import Notification from './Notification';
-export default Notification;
+import Alert from './Alert';
+export { Alert };
+// export Notify from './Notify';

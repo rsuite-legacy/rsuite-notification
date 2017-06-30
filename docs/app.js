@@ -1,31 +1,18 @@
 import React, { Component } from 'react';
-import Notification from '../src';
+import { Alert } from '../src/index';
 import '../src/less/index.less';
 
-const notification = Notification.newInstance({});
 
 class App extends Component {
 
   handleSuccess = () => {
-    notification.success({
-      content: 'message',
-      duration: null,
-      closable: true
-    });
+    Alert.success('message', 3);
   }
   handleError = () => {
-    notification.error({
-      content: 'long long long long long error message',
-      duration: null,
-      closable: true
-    });
+    Alert.error('error message');
   }
   handleInfo = () => {
-    notification.info({
-      content: 'message',
-      duration: null,
-      closable: true
-    });
+    Alert.info('this is info message', 3);
   }
   handleNotification = () => {
     notification.success({

@@ -42,10 +42,9 @@ class Notification extends Component {
     return transitionName;
   }
 
-  add = (notice, type) => {
+  add = (notice) => {
     const { notices } = this.state;
     const key = notice.key = notice.key || getUid();
-    notice.type = type;
     if (!notices.filter(notice => notice.key === key).length) {
       this.setState({
         notices: notices.concat(notice)
