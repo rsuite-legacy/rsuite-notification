@@ -1,47 +1,20 @@
-[![Travis](https://img.shields.io/travis/rsuite/rsuite-inputnumber.svg)](https://travis-ci.org/rsuite/rsuite-inputnumber) [![npm](https://img.shields.io/npm/v/rsuite-inputnumber.svg)](https://www.npmjs.com/package/rsuite-inputnumber)
-# rsuite-inputnumber 数字输入框
-通过鼠标或键盘，输入范围内的数值。
+# rsuite-notification
+>消息通知及提醒组件
+`rsuite-notification` 提供了 `Alert` 和 `Nofity` 两个组件。`Alert` 用于消息提醒，`Notify` 用于通知及显示较多的文本。
 
-# 快速开始
-### 安装
-```
-npm install rsuite-inputnumber --save
-```
-**示例**
+# Alert 用法
 
-```javascript
-import React, { PropTypes } from 'react';
-import RsuiteInputNumber from '../../src/index';
+* `Alert.success(content, duration, onClose)`
+* `Alert.error(content, duration, onClose)`
+* `Alert.info(content, duration, onClose)`
 
-function handleOnChange(value){
-  console.log('changed', value);
-}
-const Basic = props => (
-  <RsuiteInputNumber
-    defaultValue={34}
-    step={1}
-    max={10}
-    min={0}
-    onChange={handleOnChange}
-  />
-);
-export default Basic;
-
-```
-
-# Props
-
+## Prop
 Name | Type | Default | Description |
 ---- | ---- | ------- | ----------- |
-min  | number | `Number.MIN_SAFE_INTEGER` |  最小值
-max  | number | `Number.MAX_SAFE_INTEGER` |  最大值
-step | number | 1 | 每次改变步数，可以为小数
-defaultValue | number |  | 默认值
-value | number |  | inputNumber 的值
-prefix | string |  | 前缀
-postfix | string | | 后缀
-disabled | bool | false | 是否禁用
-onChange | func |  | onChange 回调函数
+content（必选）  | string | ReactDOM |  |  通知内容
+duration  | number | 1.5 |  消息框持续时间
+onClose | function | | 关闭回调函数
+
 
 # 测试
 运行测试用例：
