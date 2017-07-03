@@ -14,8 +14,8 @@ function getInstance(alertInstance) {
 }
 
 function notice(content, duration = defaultDuration, onClose, type) {
-  let instance = getInstance();
-  instance.notice({
+  alertInstance = getInstance(alertInstance);
+  alertInstance.notice({
     content,
     duration,
     onClose,
