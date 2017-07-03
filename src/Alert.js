@@ -8,8 +8,9 @@ let getContainer;
 
 function getInstance(alertInstance) {
   return alertInstance || Notification.newInstance({
-    top: defaultTop,
-    duration: defaultDuration
+    style: { top: defaultTop },
+    duration: defaultDuration,
+    className: 'rsuite-alert'
   });
 }
 
