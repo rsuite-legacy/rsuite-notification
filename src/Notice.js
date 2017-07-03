@@ -30,7 +30,7 @@ class Notice extends Component {
 
   clearCloseTimer() {
     if (this.closeTimer) {
-      clearTimeout(this.clearCloseTimer);
+      clearTimeout(this.closeTimer);
       this.closeTimer = null;
     }
   }
