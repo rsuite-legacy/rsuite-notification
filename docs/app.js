@@ -36,7 +36,7 @@ class App extends Component {
     Notify.success({
       title: 'Notify',
       description: 'long long long long long error messagelong long long long long error messagelong long long long long error messagelong long long long long error messagelong long long long long error message',
-      duration: 5,
+      duration: 50,
       onClose: this.handleOnClose
     });
   }

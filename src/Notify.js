@@ -1,3 +1,4 @@
+import React from 'react';
 import Notification from './core';
 import { NOTICE_TYPES, PLACEMENT_TYPES } from './constants/index';
 
@@ -62,11 +63,15 @@ function notice(config) {
   } else {
     duration = config.duration;
   }
-
+  let content = (
+    <div className="notify">
+      <div className="title">{config.title}</div>
+      <div className="description">{config.description}</div>
+    </div>
+  );
   let instance = getInstance(config.placement);
   instance.notice({
-    title: config.title,
-    content: config.description,
+    content,
     duration,
     closable: true,
     onClose: config.onClose,

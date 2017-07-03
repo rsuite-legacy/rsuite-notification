@@ -4,7 +4,6 @@ import classnames from 'classnames';
 
 const propTypes = {
   duration: PropTypes.number,
-  title: PropTypes.string,
   content: PropTypes.any,
   onClose: PropTypes.func
 };
@@ -41,20 +40,18 @@ class Notice extends Component {
   }
 
   render() {
-    const { prefixCls, closable, className, title, content, style, type } = this.props;
+    const { prefixCls, closable, className, content, style, type } = this.props;
     const componentClass = `${prefixCls}-notice`;
     const classNames = {
       [`${componentClass}`]: true,
       [`${componentClass}-closable`]: closable,
       [className]: !!className,
       [`${prefixCls}-${type}`]: !!type,
-      [`${prefixCls}-notify`]: !!title
     };
 
     return (
       <div className={classnames(classNames)} style={style}>
-        {title && (<h4 className={`${componentClass}-title`}>{title}</h4>)}
-        <div className={`${componentClass}-content`}>{content}</div>
+       <div className={`${componentClass}-content`}>{content}</div>
         {closable && <div onClick={this.close} className={`${componentClass}-close`}>
           <span className={`${componentClass}-close-x`}></span>
         </div>}

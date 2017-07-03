@@ -17,12 +17,17 @@
       right: 50%;
     }
   }
-
   &.rsuite-notify{
 
   }
-  &-notify{
+  .notify{
     width: 320px;
+    .title{
+      font-size:  16px;
+    }
+    .description{
+      padding: 5px 0;
+    }
   }
   &-notice {
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.28) !important;
@@ -60,37 +65,37 @@
       }
     }
   }
-  &-notice.move-up-leave.move-up-leave-active {
-    animation-name: fadeInDownBig;
-    animation-duration: 1s;
-  }
-    &-info{
+  &-info{
         background-color: @color-notification-info-bg ;
-        .@{notificationPrefixCls}-title{
+        .title{
           color: @color-notification-info-font ;
         }
     }
 
     &-error{
         background-color: @color-notification-error-bg;
-        .@{notificationPrefixCls}-title{
+        .title{
           color: @color-notification-error-font;
         }
     }
 
     &-success{
         background-color: @color-notification-success-bg ;
-        .@{notificationPrefixCls}-title{
+        .title{
           color: @color-notification-success-font;
         }
     }
 
     &-info{
         background-color: @color-notification-info-bg;
-        .@{notificationPrefixCls}-title{
+        .title{
           color: @color-notification-info-font;
         }
     }
+  &-notice.move-up-leave.move-up-leave-active {
+    animation-name: fadeInDownBig;
+    animation-duration: 1s;
+  }
 }
 
 @keyframes fadeInDownBig {
