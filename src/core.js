@@ -20,7 +20,6 @@ const defaultProps = {
   animation: 'move-up',
   style: {
     top: '5px',
-    left: '50%'
   }
 };
 

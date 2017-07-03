@@ -11,8 +11,17 @@
 .@{notificationPrefixCls} {
   position: fixed;
   z-index: 1000;
-  left: 50%;
-  &-notification{
+  &.rsuite-alert{
+    left: 50%;
+    .@{notificationPrefixCls}-notice{
+      right: 50%;
+    }
+  }
+
+  &.rsuite-notify{
+
+  }
+  &-notify{
     width: 320px;
   }
   &-notice {
@@ -23,7 +32,6 @@
     display: block;
     vertical-align: middle;
     position: relative;
-    right: 50%;
     margin: 10px;
     &-content{
       padding: 0 10px 0 5px;

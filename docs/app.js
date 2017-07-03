@@ -1,29 +1,47 @@
 import React, { Component } from 'react';
-import { Alert } from '../src/index';
+import { Alert, Notify } from '../src/index';
+import { PLACEMENT_TYPES } from '../src/constants/index';
+
 import '../src/less/index.less';
+
 Alert.config({
-  top: 30,
-  duration: 5
+  duration: 50,
+  top: 20,
 });
 
 class App extends Component {
 
   handleSuccess = () => {
-    Alert.success('message', 3);
+    Alert.success('message');
   }
+
   handleError = () => {
     Alert.error('error message');
   }
+
   handleInfo = () => {
-    Alert.info('this is info message', 3);
+    Alert.info('this is info message');
   }
-  handleNotification = () => {
-    notification.success({
-      title: 'Notificition',
-      content: 'long long long long long error messagelong long long long long error messagelong long long long long error messagelong long long long long error messagelong long long long long error message',
-      duration: null,
-      closable: true
+
+  handleNotify = (placement = 'topRight') => {
+    Notify.open({
+      title: 'Notify',
+      description: 'long long long long long error messagelong long long long long error messagelong long long long long error messagelong long long long long error messagelong long long long long error message',
+      duration: 5,
+      placement
     });
+  }
+
+  handleNotifySuccess = () => {
+    Notify.success({
+      title: 'Notify',
+      description: 'long long long long long error messagelong long long long long error messagelong long long long long error messagelong long long long long error messagelong long long long long error message',
+      duration: 5,
+      onClose: this.handleOnClose
+    });
+  }
+  handleOnClose() {
+    console.log('closed');
   }
 
   render() {
@@ -37,9 +55,11 @@ class App extends Component {
         </section>
         <section>
           <h2>Notification</h2>
-          <button onClick={this.handleNotifiySuccess}>success</button>
-          <button onClick={this.handleNotifyError}>error</button>
-          <button onClick={this.handleNotifyInfo}>info</button>
+          <button onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.TOPLEFT)}>topLeft</button>
+          <button onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.TOPRIGHT)}>topRight</button>
+          <button onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.BOTTOMLEFT)}>bottomLeft</button>
+          <button onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.BOTTOMRIGHT)}>bottomRight</button>
+          <button onClick={this.handleNotifySuccess}>Success</button>
         </section>
 
       </div>

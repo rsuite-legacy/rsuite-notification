@@ -1,3 +1,4 @@
 import Alert from './Alert';
-export { Alert };
+import Notify from './Notify';
+export { Alert, Notify };
 // export Notify from './Notify';

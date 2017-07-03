@@ -37,7 +37,7 @@ function getPlacementStyle(placement = defaultPlacement) {
     case PLACEMENT_TYPES.BOTTOMLEFT:
       style = {
         bottom: defaultBottom,
-        right: 24,
+        left: 24,
       };
       break;
     case PLACEMENT_TYPES.BOTTOMRIGHT:
