@@ -48,7 +48,7 @@ class Notice extends Component {
       [`${componentClass}-closable`]: closable,
       [className]: !!className,
       [`${prefixCls}-${type}`]: !!type,
-      [`${prefixCls}-notification`]: !!title
+      [`${prefixCls}-notify`]: !!title
     };
 
     return (
