@@ -30,12 +30,12 @@
     }
   }
   &-notice {
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.28) !important;
     padding: 10px 20px;
-    border: 0px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.28) !important;
     background: #fff;
     display: block;
-    vertical-align: middle;
+    width: auto;
+    line-height: 1.5;
     position: relative;
     margin: 10px;
     &-content{
@@ -92,10 +92,14 @@
           color: @color-notification-info-font;
         }
     }
-  &-notice.move-up-leave.move-up-leave-active {
-    animation-name: fadeInDownBig;
-    animation-duration: 1s;
-  }
+    &-move-up-enter-active{
+      animation-name: rcNotificationFadeIn;
+      animation-duration: 1s;
+    }
+    &-move-up-leave-active {
+      animation-name: rcNotificationFadeOut;
+      animation-duration: 1s;
+    }
 }
 
 @keyframes fadeInDownBig {
@@ -107,5 +111,22 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+@keyframes rcNotificationFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rcNotificationFadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }

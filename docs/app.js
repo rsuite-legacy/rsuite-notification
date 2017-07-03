@@ -49,17 +49,17 @@ class App extends Component {
       <div className="doc-page">
         <section>
           <h2>Alert</h2>
-          <button onClick={this.handleSuccess}>success</button>
-          <button onClick={this.handleError}>error</button>
-          <button onClick={this.handleInfo}>info</button>
+          <button className="btn btn-primary" onClick={this.handleSuccess}>success</button>
+          <button className="btn btn-primary" onClick={this.handleError}>error</button>
+          <button className="btn btn-primary" onClick={this.handleInfo}>info</button>
         </section>
         <section>
           <h2>Notification</h2>
-          <button onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.TOPLEFT)}>topLeft</button>
-          <button onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.TOPRIGHT)}>topRight</button>
-          <button onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.BOTTOMLEFT)}>bottomLeft</button>
-          <button onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.BOTTOMRIGHT)}>bottomRight</button>
-          <button onClick={this.handleNotifySuccess}>Success</button>
+          <button className="btn btn-primary" onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.TOPLEFT)}>topLeft</button>
+          <button className="btn btn-primary" onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.TOPRIGHT)}>topRight</button>
+          <button className="btn btn-primary" onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.BOTTOMLEFT)}>bottomLeft</button>
+          <button className="btn btn-primary" onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.BOTTOMRIGHT)}>bottomRight</button>
+          <button className="btn btn-primary" onClick={this.handleNotifySuccess}>Success</button>
         </section>
 
       </div>
