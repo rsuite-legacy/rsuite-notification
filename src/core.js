@@ -62,7 +62,7 @@ class Notification extends Component {
 
   render() {
     const { notices, prefixCls } = this.state;
-    const { className, top } = this.props;
+    const { className, style } = this.props;
 
     const noticeNodes = notices.map((notice) => {
       return <Notice
@@ -82,7 +82,7 @@ class Notification extends Component {
     }
 
     return (
-      <div className={classnames(classNames)} style={{ top: top }}>
+      <div className={classnames(classNames)} style={style}>
         <Animate transitionName={this.getTransitionName()} {...animateProps} >{noticeNodes}</Animate>
       </div>
     );
