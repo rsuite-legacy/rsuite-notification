@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import chain from './utils/createChainedFunction';
-import Animate from 'rc-animate';
+// import Animate from 'rc-animate';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import classnames from 'classnames';
 import Notice from './Notice';
 
@@ -17,7 +18,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  animation: 'move-up',
+  animation: 'fade',
   style: {
     top: '5px',
   }
@@ -79,10 +80,17 @@ class Notification extends Component {
     if (this.state.notices.length <= 1) {
       animateProps.component = '';
     }
-
+    const transitionName = `${this.state.prefixCls}-${this.props.animation}`;
     return (
       <div className={classnames(classNames)} style={style}>
-        <Animate transitionName={this.getTransitionName()} {...animateProps} >{noticeNodes}</Animate>
+        {/*<Animate transitionName={this.getTransitionName()} {...animateProps} >{noticeNodes}</Animate>*/}
+        <ReactCSSTransitionGroup
+          transitionName={transitionName}
+          transitionEnterTimeout={200}
+          transitionLeaveTimeout={200}
+        >
+          {noticeNodes}
+        </ReactCSSTransitionGroup>
       </div>
     );
   }

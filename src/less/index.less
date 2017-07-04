@@ -92,42 +92,20 @@
           color: @color-notification-info-font;
         }
     }
-
-    // &-move-up-enter&-move-up-enter-active{
-    //   animation-name: fadeInDownBig;
-    //   animation-duration: .5s;
-    // }
-    // &-move-up-leave&-move-up-leave-active {
-    //   animation-name: rcNotificationFadeOut;
-    //   animation-duration: .5s;
-    // }
+    &-fade-enter{
+      opacity: 0.01
+    }
+    &-fade-enter-active{
+      opacity: 1;
+      transition: opacity 200ms ease-in;
+    }
+    &-fade-leave{
+      opacity: 1;
+    }
+    &-fade-leave-active {
+      opacity: 0.01;
+      transition: opacity 200ms ease-in;
+    }
 }
 
-@keyframes fadeInDownBig {
-  from {
-    opacity: 0;
-    transform: translate3d(0, -2000px, 0);
-  }
 
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes rcNotificationFadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes rcNotificationFadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}

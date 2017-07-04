@@ -48,6 +48,7 @@
     "classnames": "^2.2.5",
     "dom-lib": "0.0.16",
     "rc-animate": "^2.4.0",
+    "react-addons-css-transition-group": "^15.6.0",
     "rsuite-theme": "^0.3.30"
   },
   "peerDependencies": {
