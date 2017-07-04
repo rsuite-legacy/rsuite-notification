@@ -1,7 +1,0 @@
-bin/**
-build/**
-lib/**
-node_modules/**
-webpack.config.js
-webpack.dev.config.js
-/cache/
