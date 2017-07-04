@@ -1,5 +1,5 @@
-import Notification from './core';
-
+import Notification from '../core';
+import { NOTICE_TYPES } from '../constants/index';
 
 let alertInstance;
 let defaultDuration = 1.5;
@@ -27,13 +27,13 @@ function notice(content, duration = defaultDuration, onClose, type) {
 
 export default {
   success(content, duration, onClose) {
-    notice(content, duration, onClose, 'success');
+    notice(content, duration, onClose, NOTICE_TYPES.SUCCESS);
   },
   error(content, duration, onClose) {
-    notice(content, duration, onClose, 'error');
+    notice(content, duration, onClose, NOTICE_TYPES.ERROR);
   },
   info(content, duration, onClose) {
-    notice(content, duration, onClose, 'info');
+    notice(content, duration, onClose, NOTICE_TYPES.INFO);
   },
   /**
    *

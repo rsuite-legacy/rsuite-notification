@@ -1,6 +1,6 @@
 import React from 'react';
-import Notification from './core';
-import { NOTICE_TYPES, PLACEMENT_TYPES } from './constants/index';
+import Notification from '../core';
+import { NOTICE_TYPES, PLACEMENT_TYPES } from '../constants/index';
 
 
 let defaultPlacement = 'topRight';
