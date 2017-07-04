@@ -53,7 +53,7 @@ function getPlacementStyle(placement = defaultPlacement) {
 
 /**
  *
- * @param {*} config : title,description,style,duration,placement,onClose,type, key
+ * @param {*} config : title,description,style,duration,placement,top, bottom, onClose,type, key
  */
 function notice(config) {
   let duration;
@@ -63,6 +63,15 @@ function notice(config) {
   } else {
     duration = config.duration;
   }
+
+  if (config.top !== undefined) {
+    defaultTop = config.top;
+  }
+
+  if (config.bottom !== undefined) {
+    defaultBottom = config.bottom;
+  }
+
   let content = (
     <div className="notify">
       <div className="title">{config.title}</div>
