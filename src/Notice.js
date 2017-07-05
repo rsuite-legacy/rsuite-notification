@@ -5,7 +5,12 @@ import classnames from 'classnames';
 const propTypes = {
   duration: PropTypes.number,
   content: PropTypes.any,
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
+  closable: PropTypes.bool,
+  prefixCls: PropTypes.string,
+  className: PropTypes.string,
+  style: PropTypes.object,
+  type: PropTypes.string
 };
 
 const defaultProps = {};
@@ -51,7 +56,7 @@ class Notice extends Component {
 
     return (
       <div className={classnames(classNames)} style={style}>
-       <div className={`${componentClass}-content`}>{content}</div>
+        <div className={`${componentClass}-content`}>{content}</div>
         {closable && <div onClick={this.close} className={`${componentClass}-close`}>
           <span className={`${componentClass}-close-x`}></span>
         </div>}

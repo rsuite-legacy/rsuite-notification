@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import chain from './utils/createChainedFunction';
-// import Animate from 'rc-animate';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import classnames from 'classnames';
+import chain from './utils/createChainedFunction';
+// import Animate from 'rc-animate';
+
 import Notice from './Notice';
 
 let id = 0;
@@ -83,7 +83,6 @@ class Notification extends Component {
     const transitionName = `${this.state.prefixCls}-${this.props.animation}`;
     return (
       <div className={classnames(classNames)} style={style}>
-        {/*<Animate transitionName={this.getTransitionName()} {...animateProps} >{noticeNodes}</Animate>*/}
         <ReactCSSTransitionGroup
           transitionName={transitionName}
           transitionEnterTimeout={200}

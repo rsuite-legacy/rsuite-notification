@@ -7,18 +7,7 @@ let defaultPlacement = 'topRight';
 let defaultTop = 24;
 let defaultBottom = 24;
 let defaultDuration = 4.5;
-let getContainer;
 let notityInstance = {};
-
-function getInstance(placement = defaultPlacement) {
-  if (!notityInstance[placement]) {
-    notityInstance[placement] = Notification.newInstance({
-      style: getPlacementStyle(placement),
-      className: 'rsuite-notify',
-    });
-  }
-  return notityInstance[placement];
-}
 
 function getPlacementStyle(placement = defaultPlacement) {
   let style = {};
@@ -47,8 +36,24 @@ function getPlacementStyle(placement = defaultPlacement) {
         right: 24,
       };
       break;
+    default:
+      style = {
+        top: defaultTop,
+        left: 24,
+      };
+      break;
   }
   return style;
+}
+
+function getInstance(placement = defaultPlacement) {
+  if (!notityInstance[placement]) {
+    notityInstance[placement] = Notification.newInstance({
+      style: getPlacementStyle(placement),
+      className: 'rsuite-notify',
+    });
+  }
+  return notityInstance[placement];
 }
 
 /**

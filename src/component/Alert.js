@@ -6,11 +6,12 @@ let defaultDuration = 1.5;
 let defaultTop;
 let getContainer;
 
-function getInstance(alertInstance) {
-  return alertInstance || Notification.newInstance({
+function getInstance(instance) {
+  return instance || Notification.newInstance({
     style: { top: defaultTop },
     duration: defaultDuration,
-    className: 'rsuite-alert'
+    className: 'rsuite-alert',
+    getContainer
   });
 }
 
