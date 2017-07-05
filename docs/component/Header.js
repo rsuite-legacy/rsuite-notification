@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+
 const Header = props => (
   <div role="navigation" className="header navbar navbar-inverse navbar-fixed-top" data-reactid=".0.0">
     <div className="header-inner" >
@@ -6,7 +7,7 @@ const Header = props => (
         <div className="navbar-header">
           <a href="#" className="navbar-brand">
             <span className="prefix">R</span>
-            <span>Suite InputNumber</span>
+            <span>Suite Notification</span>
           </a>
           <button type="button" className="navbar-toggle collapsed">
             <span className="sr-only">Toggle navigation</span>
@@ -17,8 +18,12 @@ const Header = props => (
         </div>
         <div className="collapse navbar-collapse collapse">
           <ul className="nav navbar-right navbar-nav"
-          ><li role="presentation" className="">
-              <a href="https://github.com/rsuite/rsuite-inputnumber" target="_blank">GitHub</a>
+          >
+          <li role="presentation" className="">
+              <a href="https://github.com/rsuite/rsuite-notification#rsuite-notification" target="_blank">API</a>
+            </li>
+          <li role="presentation" className="">
+              <a href="https://github.com/rsuite/rsuite-notification" target="_blank">GitHub</a>
             </li>
           </ul>
         </div>

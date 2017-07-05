@@ -1,67 +1,47 @@
 import React, { Component } from 'react';
-import { Alert, Notify } from '../src/index';
+import { Markdown } from 'markdownloader';
+import { Notify } from '../src/index';
 import { PLACEMENT_TYPES } from '../src/constants/index';
 
+import Header from './component/Header';
+import AlertDemo from './component/Alert';
+import NotifyDemo from './component/Notify';
 import '../src/less/index.less';
+import './less/index.less';
 
-Alert.config({
-  duration: 50,
-  top: 20,
-});
 
 class App extends Component {
-
-  handleSuccess = () => {
-    Alert.success('message');
-  }
-
-  handleError = () => {
-    Alert.error('error message');
-  }
-
-  handleInfo = () => {
-    Alert.info('this is info message');
-  }
-
-  handleNotify = (placement = 'topRight') => {
-    Notify.open({
-      title: 'Notify',
-      description: 'long long long long long error messagelong long long long long error messagelong long long long long error messagelong long long long long error messagelong long long long long error message',
-      duration: 5,
-      placement
-    });
-  }
-
-  handleNotifySuccess = () => {
-    Notify.success({
-      title: 'Notify',
-      description: 'long long long long long error messagelong long long long long error messagelong long long long long error messagelong long long long long error messagelong long long long long error message',
-      duration: 50,
-      onClose: this.handleOnClose
-    });
-  }
-  handleOnClose() {
-    console.log('closed');
-  }
-
   render() {
     return (
       <div className="doc-page">
-        <section>
-          <h2>Alert</h2>
-          <button className="btn btn-primary" onClick={this.handleSuccess}>success</button>
-          <button className="btn btn-primary" onClick={this.handleError}>error</button>
-          <button className="btn btn-primary" onClick={this.handleInfo}>info</button>
-        </section>
-        <section>
-          <h2>Notification</h2>
-          <button className="btn btn-primary" onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.TOPLEFT)}>topLeft</button>
-          <button className="btn btn-primary" onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.TOPRIGHT)}>topRight</button>
-          <button className="btn btn-primary" onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.BOTTOMLEFT)}>bottomLeft</button>
-          <button className="btn btn-primary" onClick={this.handleNotify.bind(null, PLACEMENT_TYPES.BOTTOMRIGHT)}>bottomRight</button>
-          <button className="btn btn-primary" onClick={this.handleNotifySuccess}>Success</button>
-        </section>
-
+        <Header />
+        <div className="container">
+          <h1>Rsuite Notification</h1>
+          <p>提供 Alert 和 Notify 两个组件，用于全局提示消息</p>
+          <hr />
+          <div>
+            <h2>Alert - 消息提醒框</h2>
+            <div className="row">
+              <div className="col-md-8">
+                <Markdown> {require('./md/Alert.md')}</Markdown>
+              </div>
+              <div className="col-md-4">
+                <AlertDemo />
+              </div>
+            </div>
+          </div>
+          <div>
+            <h2>Notify - 消息通知框</h2>
+            <div className="row">
+              <div className="col-md-8">
+                <Markdown> {require('./md/Notify.md')}</Markdown>
+              </div>
+              <div className="col-md-4">
+                <NotifyDemo />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
