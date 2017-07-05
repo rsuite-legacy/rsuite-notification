@@ -79,7 +79,6 @@ onClose | function | | 关闭回调函数
 * `Notify.error(config)` - 打开一个错误提醒的消息框
 * `Notify.info(config)` - 打开一个信息提醒的消息框
 * `Notify.remove(key)` - 手动移除消息框
-* `Notify.destroy()` - 销毁所有消息框
 
 ## Config
 Name | Type | Default | Description |
