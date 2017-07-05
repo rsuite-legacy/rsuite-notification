@@ -1,0 +1,202 @@
+/*! Last update: Wed Jul 05 2017 11:50:32 GMT+0800 (CST) */
+.rsuite-notification {
+  position: fixed;
+  z-index: 9999;
+}
+.rsuite-notification.rsuite-alert {
+  left: 50%;
+}
+.rsuite-notification.rsuite-alert .rsuite-notification-notice {
+  right: 50%;
+}
+.rsuite-notification .notify {
+  width: 320px;
+}
+.rsuite-notification .notify .title {
+  font-size: 16px;
+}
+.rsuite-notification .notify .description {
+  padding: 5px 0;
+}
+.rsuite-notification-notice {
+  padding: 10px 20px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.28) !important;
+  background: #fff;
+  display: block;
+  width: auto;
+  line-height: 1.5;
+  position: relative;
+  margin: 10px;
+}
+.rsuite-notification-notice-content {
+  padding: 0 10px 0 5px;
+}
+.rsuite-notification-notice-closable {
+  padding-right: 20px;
+}
+.rsuite-notification-notice-close {
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  cursor: pointer;
+  outline: none;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: .2;
+  text-decoration: none;
+}
+.rsuite-notification-notice-close-x:after {
+  content: '\D7';
+}
+.rsuite-notification-info {
+  background-color: #d9edf7;
+}
+.rsuite-notification-info .title {
+  color: #31708f;
+}
+.rsuite-notification-error {
+  background-color: #f2dede;
+}
+.rsuite-notification-error .title {
+  color: #a94442;
+}
+.rsuite-notification-success {
+  background-color: #dff0d8;
+}
+.rsuite-notification-success .title {
+  color: #3c763d;
+}
+.rsuite-notification-info {
+  background-color: #d9edf7;
+}
+.rsuite-notification-info .title {
+  color: #31708f;
+}
+.rsuite-notification-fade-enter {
+  opacity: 0.01;
+}
+.rsuite-notification-fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease-in;
+}
+.rsuite-notification-fade-leave {
+  opacity: 1;
+}
+.rsuite-notification-fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 200ms ease-in;
+}
+.doc-page {
+  margin: 70px 0;
+}
+.header {
+  background: #1c272d;
+}
+.prefix {
+  color: #0ae;
+}
+.sub-title {
+  font-size: 16px;
+  margin: 10px 0;
+}
+.buttons-list {
+  list-style: none;
+}
+.buttons-list li {
+  margin: 5px 0;
+  padding: 0;
+}
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+  color: #8e908c;
+}
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+  color: #c82829;
+}
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+  color: #f5871f;
+}
+/* Tomorrow Yellow */
+.hljs-attribute {
+  color: #eab700;
+}
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: #718c00;
+}
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+  color: #4271ae;
+}
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+  color: #8959a8;
+}
+.hljs {
+  display: block;
+  overflow-x: auto;
+  background: white;
+  color: #4d4d4c;
+  padding: 0.5em;
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: bold;
+}
+.markdown table {
+  width: 100%;
+}
+.markdown table th {
+  background: #f1f1f1;
+}
+.markdown table td,
+.markdown table th {
+  border: 1px solid #eee;
+  padding: 10px;
+}
+pre {
+  border: none;
+  border-radius: 0;
+}
+code {
+  border-radius: inherit;
+}
+.footer {
+  padding: 18px 0;
+  text-align: right;
+}
+.footer a {
+  margin: 0 10px;
+}
+.footer .fa-github {
+  font-size: 18px;
+  vertical-align: middle;
+}
