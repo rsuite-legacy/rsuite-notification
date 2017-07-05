@@ -111,9 +111,6 @@ export default {
     notice(config);
   },
   remove(key) {
-
-  },
-  destroy() {
-
+    getInstance().remove(key);
   }
 };
