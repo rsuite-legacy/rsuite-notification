@@ -5,11 +5,12 @@
 npm install rsuite-notification
 ```
 # Alert
-`Alert` 用于全局展示操作反馈信息。可提供成功、信息和错误等反馈信息。顶部居中显示并自动消失，是一种不打断用户操作的轻量级提示方式。
+`Alert` 用于全局展示操作反馈信息。可提供成功、信息和错误等反馈信息。顶部居中显示并自动消失，是一种不打断用户操作的轻量级提示方式。提供了下面几个方法：
 
 * `Alert.success(content, duration, onClose)`
 * `Alert.error(content, duration, onClose)`
 * `Alert.info(content, duration, onClose)`
+* `Alert.warning(content, duration, onClose)`
 
 ```javascript
 import React, { Component } from 'react';
@@ -34,6 +35,11 @@ class App extends Component {
   handleInfo = () => {
     Alert.info('this is info message');
   }
+  
+  handleInfo = () => {
+    Alert.warning('this is warning message');
+  }
+  
   handleOnClose() {
     console.log('closed');
   }
@@ -46,6 +52,7 @@ class App extends Component {
           <button className="btn btn-primary" onClick={this.handleSuccess}>success</button>
           <button className="btn btn-primary" onClick={this.handleError}>error</button>
           <button className="btn btn-primary" onClick={this.handleInfo}>info</button>
+          <button className="btn btn-primary" onClick={this.handleWarning}>warning</button>
         </section>
       </div>
     );
@@ -72,12 +79,13 @@ onClose | function | | 关闭回调函数
 
 
 # Notify
-`Notify` 用于全局展示通知提醒，通过用于比较复杂，内容较多的通知。
+`Notify` 用于全局展示通知提醒，通过用于比较复杂，内容较多的通知。提供了下面几个方法：
 
 * `Notify.open(config)` - 打开一个普通的消息框
 * `Notify.success(config)` - 打开一个成功提醒的消息框
 * `Notify.error(config)` - 打开一个错误提醒的消息框
 * `Notify.info(config)` - 打开一个信息提醒的消息框
+* `Notify.warning(config)` - 打开一个信息提醒的消息框
 * `Notify.remove(key)` - 手动移除消息框
 
 ## Config
