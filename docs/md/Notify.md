@@ -1,6 +1,6 @@
 ```javascript
 import React, { Component } from 'react';
-import { Notify } from '../../src/index';
+import { Notify } from 'rsuite-notification';
 
 class NotifyDemo extends Component {
   constructor(props) {
@@ -44,6 +44,15 @@ class NotifyDemo extends Component {
     });
   }
 
+  handleWarning = () => {
+    Notify.warning({
+      title: 'Warning',
+      description: ' messages  messages  messages messages',
+      duration: 50,
+      onClose: this.handleOnClose
+    });
+  }
+
   handleOnClose = () => {
   }
 
@@ -75,6 +84,9 @@ class NotifyDemo extends Component {
           <li>
             <button className="btn btn-primary" onClick={this.handleInfo}>info</button>
           </li>
+          <li>
+            <button className="btn btn-primary" onClick={this.handleWarning}>warning</button>
+          </li>
         </ul>
       </div>
     );
@@ -82,7 +94,5 @@ class NotifyDemo extends Component {
 }
 
 export default NotifyDemo;
-
-
 
 ```

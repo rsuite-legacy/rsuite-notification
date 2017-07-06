@@ -43,6 +43,15 @@ class NotifyDemo extends Component {
     });
   }
 
+  handleWarning = () => {
+    Notify.warning({
+      title: 'Warning',
+      description: ' messages  messages  messages messages',
+      duration: 50,
+      onClose: this.handleOnClose
+    });
+  }
+
   handleOnClose = () => {
   }
 
@@ -73,6 +82,9 @@ class NotifyDemo extends Component {
           </li>
           <li>
             <button className="btn btn-primary" onClick={this.handleInfo}>info</button>
+          </li>
+          <li>
+            <button className="btn btn-primary" onClick={this.handleWarning}>warning</button>
           </li>
         </ul>
       </div>
