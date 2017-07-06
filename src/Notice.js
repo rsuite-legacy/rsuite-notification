@@ -44,6 +44,10 @@ class Notice extends Component {
     this.props.onClose();
   }
 
+  componentWillUnmount() {
+    this.clearCloseTimer();
+  }
+
   render() {
     const { prefixCls, closable, className, content, style, type } = this.props;
     const componentClass = `${prefixCls}-notice`;
