@@ -31,6 +31,9 @@ class Notice extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.clearCloseTimer();
+  }
 
   clearCloseTimer() {
     if (this.closeTimer) {
@@ -44,10 +47,6 @@ class Notice extends Component {
     this.props.onClose();
   }
 
-  componentWillUnmount() {
-    this.clearCloseTimer();
-  }
-
   render() {
     const { prefixCls, closable, className, content, style, type } = this.props;
     const componentClass = `${prefixCls}-notice`;
@@ -59,11 +58,13 @@ class Notice extends Component {
     };
 
     return (
-      <div className={classnames(classNames)} style={style}>
-        <div className={`${componentClass}-content`}>{content}</div>
-        {closable && <div onClick={this.close} className={`${componentClass}-close`}>
-          <span className={`${componentClass}-close-x`}></span>
-        </div>}
+      <div className={`${componentClass}-wrapper`}>
+        <div className={classnames(classNames)} style={style}>
+          <div className={`${componentClass}-content`}>{content}</div>
+          {closable && <div onClick={this.close} className={`${componentClass}-close`}>
+            <span className={`${componentClass}-close-x`}></span>
+          </div>}
+        </div>
       </div>
     );
   }
