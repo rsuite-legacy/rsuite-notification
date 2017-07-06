@@ -36,6 +36,9 @@ export default {
   info(content, duration, onClose) {
     notice(content, duration, onClose, NOTICE_TYPES.INFO);
   },
+  warning(content, duration, onClose) {
+    notice(content, duration, onClose, NOTICE_TYPES.WARNING);
+  },
   /**
    *
    * @param {*} options{

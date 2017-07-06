@@ -110,6 +110,10 @@ export default {
     config.type = NOTICE_TYPES.INFO;
     notice(config);
   },
+  warning(config) {
+    config.type = NOTICE_TYPES.WARNING;
+    notice(config);
+  },
   remove(key) {
     getInstance().remove(key);
   }

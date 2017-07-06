@@ -1,7 +1,8 @@
 export const NOTICE_TYPES = {
   SUCCESS: 'success',
   ERROR: 'error',
-  INFO: 'info'
+  INFO: 'info',
+  WARNING: 'warning'
 };
 
 export const PLACEMENT_TYPES = {
