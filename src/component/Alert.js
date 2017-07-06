@@ -3,7 +3,7 @@ import { NOTICE_TYPES } from '../constants/index';
 
 let alertInstance;
 let defaultDuration = 1.5;
-let defaultTop;
+let defaultTop = 5;
 let getContainer;
 
 function getInstance(instance) {
