@@ -13,7 +13,7 @@ npm install rsuite-notification
 
 ```javascript
 import React, { Component } from 'react';
-import { Alert } from '../src/index';
+import { Alert } from 'rsuite-notification';
 import '../src/less/index.less';
 
 Alert.config({
