@@ -77,6 +77,10 @@ function notice(config) {
     defaultBottom = config.bottom;
   }
 
+  if (config.placement !== undefined) {
+    defaultPlacement = config.placement;
+  }
+
   let content = (
     <div className="notify">
       <div className="title">{config.title}</div>
@@ -115,6 +119,8 @@ export default {
     notice(config);
   },
   remove(key) {
-    getInstance().remove(key);
+    if (notityInstance[defaultPlacement]) {
+      notityInstance[defaultPlacement].remove(key);
+    }
   }
 };

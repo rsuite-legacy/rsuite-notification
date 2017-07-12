@@ -12,8 +12,13 @@ class NotifyDemo extends Component {
       title: 'Notify',
       description: 'long long long long long error messagelong long long long long error messagelong ',
       duration: 5,
-      placement
+      placement,
+      key: 0
     });
+  }
+
+  handleRemove = () => {
+    Notify.remove(0);
   }
 
   handleSuccess = () => {
@@ -61,6 +66,9 @@ class NotifyDemo extends Component {
         <ul className="buttons-list">
           <li>
             <button className="btn btn-primary" onClick={this.handleNotify.bind(null, 'topLeft')}>topLeft</button>
+          </li>
+          <li>
+            <button className="btn btn-primary" onClick={this.handleRemove}>remove</button>
           </li>
           <li>
             <button className="btn btn-primary" onClick={this.handleNotify.bind(null, 'topRight')}>topRight</button>

@@ -45,7 +45,13 @@ class Notification extends Component {
 
   add = (notice) => {
     const { notices } = this.state;
-    const key = notice.key = notice.key || getUid();
+    let key;
+    if (notice.key !== undefined || notice.key !== null) {
+      key = notice.key;
+    } else {
+      key = getUid();
+    }
+    notice.key = key;
     if (!notices.filter(notice => notice.key === key).length) {
       this.setState({
         notices: notices.concat(notice)
@@ -54,6 +60,7 @@ class Notification extends Component {
   }
 
   remove = (key) => {
+    // console.log(this.state.notices.filter(notice => notice.key !== key));
     this.setState((prevState) => {
       return {
         notices: prevState.notices.filter(notice => notice.key !== key)
