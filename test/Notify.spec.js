@@ -1,5 +1,3 @@
-import React from 'react';
-import { shallow } from 'enzyme';
 import { Notify } from '../src';
 
 const delay = timeout => new Promise(resolve => setTimeout(resolve, timeout));
