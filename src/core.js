@@ -46,10 +46,10 @@ class Notification extends Component {
   add = (notice) => {
     const { notices } = this.state;
     let key;
-    if (notice.key !== undefined || notice.key !== null) {
-      key = notice.key;
-    } else {
+    if (notice.key === undefined || notice.key === null) {
       key = getUid();
+    } else {
+      key = notice.key;
     }
     notice.key = key;
     if (!notices.filter(notice => notice.key === key).length) {
