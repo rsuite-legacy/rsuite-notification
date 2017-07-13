@@ -1,4 +1,4 @@
-[![Travis](https://img.shields.io/travis/rsuite/rsuite-notification.svg)](https://travis-ci.org/rsuite/rsuite-notification) [![npm](https://img.shields.io/npm/v/rsuite-notification.svg)](https://www.npmjs.com/package/rsuite-notification)
+[![Travis](https://img.shields.io/travis/rsuite/rsuite-notification.svg)](https://travis-ci.org/rsuite/rsuite-notification) [![npm](https://img.shields.io/npm/v/rsuite-notification.svg)](https://www.npmjs.com/package/rsuite-notification) [![Codecov branch](https://img.shields.io/codecov/c/github/rsuite/rsuite-notification/master.svg)](https://codecov.io/gh/rsuite/rsuite-notification)
 # rsuite-notification
 `rsuite-notification` 提供了 `Alert` 和 `Nofity` 两个组件。安装：
 
