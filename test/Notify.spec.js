@@ -30,5 +30,19 @@ describe(' Notify Component', () => {
     await delay(1000);
     expect(document.querySelectorAll('.rsuite-notification-notice').length).toBe(0);
   });
+
+  it('success notify should be render', async () => {
+    Notify.success({
+      title: 'Notify',
+      description: 'desc',
+      duration: 0,
+      key: 0
+    });
+    expect(document.querySelectorAll('.rsuite-notification-success').length).toBe(1);
+
+    Notify.remove(0);
+    await delay(1000);
+    expect(document.querySelectorAll('.rsuite-notification-success').length).toBe(0);
+  });
 });
 
