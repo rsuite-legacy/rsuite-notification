@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import Notification from '../core';
 import { NOTICE_TYPES, PLACEMENT_TYPES } from '../constants/index';
 
@@ -11,30 +12,35 @@ let notityInstance = {};
 
 function getPlacementStyle(placement = defaultPlacement) {
   let style = {};
+  let className;
   switch (placement) {
     case PLACEMENT_TYPES.TOPLEFT:
       style = {
         top: defaultTop,
         left: 24,
       };
+      className = 'rsuite-topLeft'
       break;
     case PLACEMENT_TYPES.TOPRIGHT:
       style = {
         top: defaultTop,
         right: 24,
       };
+      className = 'rsuite-topRight'
       break;
     case PLACEMENT_TYPES.BOTTOMLEFT:
       style = {
         bottom: defaultBottom,
         left: 24,
       };
+      className = 'rsuite-bottomLeft'
       break;
     case PLACEMENT_TYPES.BOTTOMRIGHT:
       style = {
         bottom: defaultTop,
         right: 24,
       };
+      className = 'rsuite-topRight'
       break;
     default:
       style = {
@@ -43,14 +49,18 @@ function getPlacementStyle(placement = defaultPlacement) {
       };
       break;
   }
-  return style;
+  return { style, className };
 }
 
 function getInstance(placement = defaultPlacement) {
   if (!notityInstance[placement]) {
+    let className = {
+      'rsuite-notify': true,
+      [getPlacementStyle(placement).className]: true
+    }
     notityInstance[placement] = Notification.newInstance({
-      style: getPlacementStyle(placement),
-      className: 'rsuite-notify',
+      style: getPlacementStyle(placement).style,
+      className: classnames(className),
     });
   }
   return notityInstance[placement];
