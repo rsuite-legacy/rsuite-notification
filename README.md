@@ -35,11 +35,11 @@ class App extends Component {
   handleInfo = () => {
     Alert.info('this is info message');
   }
-  
+
   handleInfo = () => {
     Alert.warning('this is warning message');
   }
-  
+
   handleOnClose() {
     console.log('closed');
   }
@@ -99,5 +99,6 @@ top | number | 24 | 消息框距离顶部的距离
 bottom | number | 24 | 消息框距离底部的距离
 onClose | function | | 关闭回调函数
 style | object | | 自定义样式
+key | string|number | | 消息框唯一标识，如果要手动移除消息框，必须填写该字段
 
 
