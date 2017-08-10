@@ -20,26 +20,18 @@ class App extends Component {
           <p>提供 Alert 和 Notify 两个组件，用于全局提示消息</p>
           <hr />
           <div>
-            <h2>Alert - 消息提醒框</h2>
-            <div className="row">
-              <div className="col-md-8">
-                <Markdown> {require('./md/Alert.md')}</Markdown>
-              </div>
-              <div className="col-md-4">
-                <AlertDemo />
-              </div>
-            </div>
+            <h4>Alert - 消息提醒框</h4>
+            <AlertDemo />
+            <Markdown> {require('./md/Alert.md')}</Markdown>
           </div>
           <div>
-            <h2>Notify - 消息通知框</h2>
-            <div className="row">
-              <div className="col-md-8">
-                <Markdown> {require('./md/Notify.md')}</Markdown>
-              </div>
-              <div className="col-md-4">
-                <NotifyDemo />
-              </div>
-            </div>
+            <h4>Notify - 消息通知框</h4>
+            <NotifyDemo />
+            <Markdown> {require('./md/Notify.md')}</Markdown>
+          </div>
+          <div>
+            <h4>Props</h4>
+            <Markdown> {require('./md/props.md')}</Markdown>
           </div>
         </div>
       </div>

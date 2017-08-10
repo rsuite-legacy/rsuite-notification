@@ -27,7 +27,7 @@ const plugins = [
     hash: true,
     path: docsPath
   })
-]
+];
 
 if (process.env.NODE_ENV === 'production') {
   plugins.push(new webpack.optimize.UglifyJsPlugin());
@@ -82,6 +82,10 @@ const common = {
         loader: 'html-loader'
       }, {
         loader: 'markdown-loader',
+        options: {
+          pedantic: true,
+          renderer: markdownLoader.renderer
+        }
       }
       ]
     }, {
