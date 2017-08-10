@@ -22,16 +22,22 @@ class App extends Component {
           <div>
             <h4>Alert - 消息提醒框</h4>
             <AlertDemo />
-            <Markdown> {require('./md/Alert.md')}</Markdown>
+            <Markdown>
+              {require('./md/Alert.md')}
+            </Markdown>
           </div>
           <div>
             <h4>Notify - 消息通知框</h4>
             <NotifyDemo />
-            <Markdown> {require('./md/Notify.md')}</Markdown>
+            <Markdown>
+              {require('./md/Notify.md')}
+            </Markdown>
           </div>
           <div>
             <h4>Props</h4>
-            <Markdown> {require('./md/props.md')}</Markdown>
+            <Markdown>
+              {require('./md/props.md')}
+            </Markdown>
           </div>
         </div>
       </div>

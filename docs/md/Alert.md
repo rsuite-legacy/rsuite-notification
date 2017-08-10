@@ -1,4 +1,4 @@
-```javascript
+```js
 import React, { Component } from 'react';
 import { Alert } from 'rsuite-notification';
 

@@ -3,9 +3,8 @@ const webpack = require('webpack');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const markdownLoader = require('markdownloader').renderer;
+
 const { NODE_ENV } = process.env;
-
-
 const extractLess = new ExtractTextPlugin({
   filename: '[name].[contenthash].css',
   disable: NODE_ENV === 'development'
