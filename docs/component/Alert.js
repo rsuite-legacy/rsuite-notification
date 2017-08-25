@@ -3,7 +3,7 @@ import { Alert } from '../../src/index';
 
 // 自定义配置，全局有效
 Alert.config({
-  duration: 5,
+  duration: 50,
   top: 10
 });
 
