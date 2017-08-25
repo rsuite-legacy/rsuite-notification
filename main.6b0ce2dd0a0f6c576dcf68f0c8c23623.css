@@ -1,4 +1,4 @@
-/*! Last update: Thu Aug 10 2017 14:45:03 GMT+0800 (CST) */
+/*! Last update: Fri Aug 25 2017 15:34:12 GMT+0800 (CST) */
 .rsuite-notification {
   position: fixed;
   z-index: 9999;
@@ -58,25 +58,25 @@
 .rsuite-notification-info {
   background-color: #d9edf7;
 }
-.rsuite-notification-info .title {
+.rsuite-notification-info .rsuite-notification-notice-content {
   color: #31708f;
 }
 .rsuite-notification-error {
   background-color: #f2dede;
 }
-.rsuite-notification-error .title {
+.rsuite-notification-error .rsuite-notification-notice-content {
   color: #a94442;
 }
 .rsuite-notification-success {
   background-color: #dff0d8;
 }
-.rsuite-notification-success .title {
+.rsuite-notification-success .rsuite-notification-notice-content {
   color: #3c763d;
 }
 .rsuite-notification-warning {
   background-color: #fcf8e3;
 }
-.rsuite-notification-warning .title {
+.rsuite-notification-warning .rsuite-notification-notice-content {
   color: #a66d3b;
 }
 .rsuite-notification-fade-enter {
