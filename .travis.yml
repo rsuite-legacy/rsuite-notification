@@ -9,11 +9,6 @@ env:
   - BROWSER=ChromeCi
   - BROWSER=Firefox
 
-cache:
-  directories:
-    - node_modules
-
-
 script:
   - npm run test
 branches:
