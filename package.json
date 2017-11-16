@@ -30,8 +30,9 @@
     "pages": "npm run publish-docs",
     "prerelease": "npm run build",
     "release": "npm pulibsh",
-    "test": "jest && codecov",
-    "coverage": "jest --colors --coverage"
+    "test": "jest",
+    "coverage": "jest --colors --coverage",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "repository": {
     "type": "git",
@@ -74,6 +75,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-standalone": "^6.7.7",
     "codecov": "^2.2.0",
+    "coveralls": "^3.0.0",
     "css-loader": "^0.23.1",
     "enzyme": "^2.7.1",
     "es5-shim": "^4.1.14",
