@@ -1,8 +1,9 @@
-```javascript
-import React, { Component } from 'react';
-import { Notify } from 'rsuite-notification';
+#### Notify
 
-class NotifyDemo extends Component {
+<!-- start-code -->
+```javascript
+
+class NotifyDemo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,9 +54,6 @@ class NotifyDemo extends Component {
     });
   }
 
-  handleOnClose = () => {
-  }
-
   render() {
     return (
       <div>
@@ -92,7 +90,15 @@ class NotifyDemo extends Component {
     );
   }
 }
-
-export default NotifyDemo;
-
+ReactDOM.render(<NotifyDemo />)
 ```
+<!-- end-code -->
+
+`Notify` 用于全局展示通知提醒，通过用于比较复杂，内容较多的通知。提供了下面几个方法：
+
+* `Notify.open(config)` - 打开一个普通的消息框
+* `Notify.success(config)` - 打开一个成功提醒的消息框
+* `Notify.error(config)` - 打开一个错误提醒的消息框
+* `Notify.info(config)` - 打开一个信息提醒的消息框
+* `Notify.warning(config)` - 打开一个信息提醒的消息框
+* `Notify.remove(key)` - 手动移除消息框

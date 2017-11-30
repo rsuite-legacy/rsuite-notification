@@ -1,14 +1,13 @@
+#### Alert - 消息提醒框
+<!-- start-code -->
 ```js
-import React, { Component } from 'react';
-import { Alert } from 'rsuite-notification';
-
 // 自定义配置，全局有效
 Alert.config({
   duration: 5,
   top: 10
 });
 
-class AlertDemo extends Component {
+class AlertDemo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,6 +51,21 @@ class AlertDemo extends Component {
     );
   }
 }
-
-export default AlertDemo;
+ReactDOM.render(<AlertDemo />)
 ```
+<!-- end-code -->
+`Alert` 用于全局展示操作反馈信息。可提供成功、信息和错误等反馈信息。顶部居中显示并自动消失，是一种不打断用户操作的轻量级提示方式。提供了下面几个方法：
+
+* `Alert.success(content, duration, onClose)`
+* `Alert.error(content, duration, onClose)`
+* `Alert.info(content, duration, onClose)`
+* `Alert.warning(content, duration, onClose)`
+
+
+此外，`Alert` 还提供了全局配置的方法 `Alert.config(options)`,配置一次，全局有效。
+
+options包含:
+
+* top - 距离页面顶部的距离
+* duration - Alert 框显示的时间
+* getContainer - Alert 框的父级容器
