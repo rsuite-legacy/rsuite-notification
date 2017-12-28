@@ -14,4 +14,16 @@ npm install rsuite-notification
 @import "~rsuite-notification/lib/less/index";
 ```
 
+### 使用
+```
+import { Alert, Notify} from 'rsuite-notification'
 
+Alert.success(content);
+
+Notify.success({
+      title: 'Success',
+      description: 'success messages success messages success messages',
+      duration: 50,
+      onClose: this.handleOnClose
+    });
+```

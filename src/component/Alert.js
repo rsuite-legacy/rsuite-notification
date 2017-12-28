@@ -2,7 +2,7 @@ import Notification from '../core';
 import { NOTICE_TYPES } from '../constants/index';
 
 let alertInstance;
-let defaultDuration = 1.5;
+let defaultDuration = 2000;
 let defaultTop = 5;
 let getContainer;
 
@@ -17,6 +17,9 @@ function getInstance(instance) {
 
 function notice(content, duration = defaultDuration, onClose, type) {
   alertInstance = getInstance(alertInstance);
+  if(typeof content === 'function'){
+    contetn = contetn();
+  }
   alertInstance.notice({
     content,
     duration,

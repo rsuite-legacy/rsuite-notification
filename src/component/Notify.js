@@ -72,29 +72,32 @@ function getInstance(placement = defaultPlacement) {
  */
 function notice(config) {
   let duration;
-
-  if (config.duration === undefined) {
-    duration = defaultDuration;
-  } else {
-    duration = config.duration;
+  let description = config.description
+  if(typeof description === 'function'){
+    description = description();
   }
+  // if (config.duration === undefined) {
+  //   duration = defaultDuration;
+  // } else {
+  //   duration = config.duration;
+  // }
 
-  if (config.top !== undefined) {
-    defaultTop = config.top;
-  }
+  // if (config.top !== undefined) {
+  //   defaultTop = config.top;
+  // }
 
-  if (config.bottom !== undefined) {
-    defaultBottom = config.bottom;
-  }
+  // if (config.bottom !== undefined) {
+  //   defaultBottom = config.bottom;
+  // }
 
-  if (config.placement !== undefined) {
-    defaultPlacement = config.placement;
-  }
+  // if (config.placement !== undefined) {
+  //   defaultPlacement = config.placement;
+  // }
 
   let content = (
     <div className="notify">
       <div className="title">{config.title}</div>
-      <div className="description">{config.description}</div>
+      <div className="description">{description}</div>
     </div>
   );
   let instance = getInstance(config.placement);

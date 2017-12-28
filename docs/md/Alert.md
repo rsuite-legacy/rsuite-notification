@@ -3,7 +3,7 @@
 ```js
 // 自定义配置，全局有效
 Alert.config({
-  duration: 5,
+  duration: 5000,
   top: 10
 });
 
@@ -15,7 +15,8 @@ class AlertDemo extends React.Component {
   }
 
   handleSuccess = () => {
-    Alert.success('message');
+    const content = <div>custom node</div>;
+    Alert.success(content);
   }
 
   handleError = () => {

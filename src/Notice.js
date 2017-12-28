@@ -27,7 +27,7 @@ class Notice extends Component {
     if (duration) {
       this.closeTimer = setTimeout(() => {
         this.close();
-      }, duration * 1000);
+      }, duration);
     }
   }
 
