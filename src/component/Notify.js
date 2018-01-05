@@ -19,28 +19,28 @@ function getPlacementStyle(placement = defaultPlacement) {
         top: defaultTop,
         left: 24,
       };
-      className = 'rsuite-topLeft';
+      className = 'rsuite-top-left';
       break;
     case PLACEMENT_TYPES.TOPRIGHT:
       style = {
         top: defaultTop,
         right: 24,
       };
-      className = 'rsuite-topRight';
+      className = 'rsuite-top-right';
       break;
     case PLACEMENT_TYPES.BOTTOMLEFT:
       style = {
         bottom: defaultBottom,
         left: 24,
       };
-      className = 'rsuite-bottomLeft';
+      className = 'rsuite-bottom-left';
       break;
     case PLACEMENT_TYPES.BOTTOMRIGHT:
       style = {
         bottom: defaultTop,
         right: 24,
       };
-      className = 'rsuite-bottomRight';
+      className = 'rsuite-bottom-right';
       break;
     default:
       style = {
