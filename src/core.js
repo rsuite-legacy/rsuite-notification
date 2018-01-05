@@ -93,8 +93,8 @@ class Notification extends Component {
       <div className={classnames(classNames)} style={style}>
         <ReactCSSTransitionGroup
           transitionName={transitionName}
-          transitionEnterTimeout={200}
-          transitionLeaveTimeout={200}
+          transitionEnterTimeout={1000}
+          transitionLeaveTimeout={1000}
         >
           {noticeNodes}
         </ReactCSSTransitionGroup>

@@ -45,9 +45,7 @@ class Notice extends Component {
 
   close = () => {
     this.clearCloseTimer();
-    setTimeout(() => {
-      this.props.onClose();
-    }, CLOSE_DELAY)
+    this.props.onClose();
   }
 
   render() {
