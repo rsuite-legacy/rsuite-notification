@@ -14,6 +14,7 @@ const propTypes = {
 };
 
 const defaultProps = {};
+const CLOSE_DELAY = 1000;
 
 class Notice extends Component {
   constructor(props) {
@@ -44,7 +45,9 @@ class Notice extends Component {
 
   close = () => {
     this.clearCloseTimer();
-    this.props.onClose();
+    setTimeout(() => {
+      this.props.onClose();
+    }, CLOSE_DELAY)
   }
 
   render() {

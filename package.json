@@ -29,7 +29,7 @@
     "prepages": "npm run docs",
     "pages": "npm run publish-docs",
     "prerelease": "npm run build",
-    "release": "npm pulibsh",
+    "release": "npm publish",
     "test": "jest",
     "coverage": "jest --colors --coverage",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
