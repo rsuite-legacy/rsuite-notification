@@ -13,7 +13,6 @@ class NotifyDemo extends React.Component {
     Notify.open({
       title: 'Notify',
       description: 'long long long long long error messagelong long long long long error messagelong ',
-      duration: 5,
       placement
     });
   }
@@ -22,7 +21,6 @@ class NotifyDemo extends React.Component {
     Notify.success({
       title: 'Success',
       description: 'success messages success messages success messages',
-      duration: 50,
       onClose: this.handleOnClose
     });
   }
@@ -31,7 +29,6 @@ class NotifyDemo extends React.Component {
     Notify.error({
       title: 'Error',
       description: ' messages  messages  messages messages',
-      duration: 50,
       onClose: this.handleOnClose
     });
   }
@@ -40,7 +37,6 @@ class NotifyDemo extends React.Component {
     Notify.info({
       title: 'Info',
       description: ' messages  messages  messages messages',
-      duration: 50,
       onClose: this.handleOnClose
     });
   }
@@ -49,7 +45,6 @@ class NotifyDemo extends React.Component {
     Notify.warning({
       title: 'Warning',
       description: ' messages  messages  messages messages',
-      duration: 50,
       onClose: this.handleOnClose
     });
   }

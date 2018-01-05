@@ -7,7 +7,7 @@ import { NOTICE_TYPES, PLACEMENT_TYPES } from '../constants/index';
 let defaultPlacement = 'topRight';
 let defaultTop = 24;
 let defaultBottom = 24;
-let defaultDuration = 4.5;
+let defaultDuration = 4500;
 let notityInstance = {};
 
 function getPlacementStyle(placement = defaultPlacement) {
@@ -76,11 +76,11 @@ function notice(config) {
   if(typeof description === 'function'){
     description = description();
   }
-  // if (config.duration === undefined) {
-  //   duration = defaultDuration;
-  // } else {
-  //   duration = config.duration;
-  // }
+  if (config.duration === undefined) {
+    duration = defaultDuration;
+  } else {
+    duration = config.duration;
+  }
 
   // if (config.top !== undefined) {
   //   defaultTop = config.top;
