@@ -4,7 +4,6 @@
 // 自定义配置，全局有效
 Alert.config({
   duration: 5000,
-  top: 10
 });
 
 class AlertDemo extends React.Component {
@@ -65,8 +64,9 @@ ReactDOM.render(<AlertDemo />)
 
 此外，`Alert` 还提供了全局配置的方法 `Alert.config(options)`,配置一次，全局有效。
 
-options包含:
+options结构如下:
 
 * top - 距离页面顶部的距离
 * duration - Alert 框显示的时间
+- classPrefix - 组件前缀名称
 * getContainer - Alert 框的父级容器

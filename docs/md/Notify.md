@@ -2,7 +2,6 @@
 
 <!-- start-code -->
 ```javascript
-
 class NotifyDemo extends React.Component {
   constructor(props) {
     super(props);
@@ -97,3 +96,10 @@ ReactDOM.render(<NotifyDemo />)
 * `Notify.info(config)` - 打开一个信息提醒的消息框
 * `Notify.warning(config)` - 打开一个信息提醒的消息框
 * `Notify.remove(key)` - 手动移除消息框
+
+`Notify` 也提供了一个 `config(options)` 方法，可供全局配置，options 参数如下：
+* top - 距离页面顶部的距离
+- bottom - 距离页面底部的距离
+- classPrefix - 组件前缀名称
+- duration - Notify 持续时间
+- getContainer Notify 父级容器

@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
-import { Header, Navbar, Nav, Row, Col } from 'rsuite';
-import Affix from 'rsuite-affix';
+import { Row, Col } from 'rsuite';
 import { Markdown } from 'markdownloader';
 import CodeView from 'react-code-view';
 import { PageContainer } from 'rsuite-docs';
 import 'react-code-view/lib/less/index.less';
-import { PLACEMENT_TYPES } from '../src/constants/index';
 import { Alert, Notify } from '../src';
 import '../src/less/index.less';
 import './less/index.less';
 
 const babelOptions = {
   presets: ['stage-0', 'react', 'es2015'],
-  plugins: [
-    'transform-class-properties'
-  ]
+  plugins: ['transform-class-properties'],
 };
 
 class App extends Component {
@@ -33,7 +29,7 @@ class App extends Component {
             <CodeView
               source={require('./md/Alert.md')}
               dependencies={{
-                Alert
+                Alert,
               }}
               babelTransformOptions={babelOptions}
             />
@@ -45,16 +41,14 @@ class App extends Component {
             <CodeView
               source={require('./md/Notify.md')}
               dependencies={{
-                Notify
+                Notify,
               }}
               babelTransformOptions={babelOptions}
             />
           </Col>
         </Row>
         <h2 id="API">API</h2>
-        <Markdown>
-          {require('./md/props.md')}
-        </Markdown>
+        <Markdown>{require('./md/props.md')}</Markdown>
       </PageContainer>
     );
   }

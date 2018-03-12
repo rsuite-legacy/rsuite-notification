@@ -1,28 +1,20 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
+// @flow
+import * as React from 'react';
+import classNames from 'classnames';
+import { prefix } from 'rsuite-utils/lib/utils';
 
-const propTypes = {
-  duration: PropTypes.number,
-  content: PropTypes.any,
-  onClose: PropTypes.func,
-  closable: PropTypes.bool,
-  prefixCls: PropTypes.string,
-  className: PropTypes.string,
-  style: PropTypes.object,
-  type: PropTypes.string
+type Props = {
+  duration: number,
+  content: any,
+  onClose?: () => void,
+  closable?: boolean,
+  classPrefix: string,
+  className?: string,
+  style?: Object,
+  type?: string,
 };
 
-const defaultProps = {};
-const CLOSE_DELAY = 1000;
-
-class Notice extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
+class Notice extends React.Component<Props> {
   componentDidMount() {
     const { duration } = this.props;
     if (duration) {
@@ -44,35 +36,48 @@ class Notice extends Component {
   }
 
   close = () => {
+    const { onClose } = this.props;
     this.clearCloseTimer();
-    this.props.onClose();
-  }
+    onClose && onClose();
+  };
+
+  addPrefix = (name: string) => prefix(this.props.classPrefix)(name);
+
+  closeTimer = null;
 
   render() {
-    const { prefixCls, closable, className, content, style, type } = this.props;
-    const componentClass = `${prefixCls}-notice`;
-    const classNames = {
-      [`${componentClass}`]: true,
-      [`${componentClass}-closable`]: closable,
-      [className]: !!className,
-      [`${prefixCls}-${type}`]: !!type,
-    };
+    const {
+      classPrefix,
+      closable,
+      className,
+      content,
+      style,
+      type = '',
+    } = this.props;
+    const noticeClass = this.addPrefix('notice');
+    const classes = classNames(noticeClass, className, {
+      [this.addPrefix('notice-closable')]: closable,
+      [`${classPrefix}-${type}`]: !!type,
+    });
 
     return (
-      <div className={`${componentClass}-wrapper`}>
-        <div className={classnames(classNames)} style={style}>
-          <div className={`${componentClass}-content`}>{content}</div>
-          {closable && <div onClick={this.close} className={`${componentClass}-close`}>
-            <span className={`${componentClass}-close-x`}></span>
-          </div>}
+      <div className={`${noticeClass}-wrapper`}>
+        <div className={classes} style={style}>
+          <div className={`${noticeClass}-content`}>{content}</div>
+          {closable && (
+            <div
+              role="button"
+              tabIndex="-1"
+              onClick={this.close}
+              className={`${noticeClass}-close`}
+            >
+              <span className={`${noticeClass}-close-x`} />
+            </div>
+          )}
         </div>
       </div>
     );
   }
 }
-
-Notice.propTypes = propTypes;
-
-Notice.defaultProps = defaultProps;
 
 export default Notice;

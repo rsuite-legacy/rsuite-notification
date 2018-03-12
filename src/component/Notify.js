@@ -1,50 +1,59 @@
 import React from 'react';
-import classnames from 'classnames';
-import Notification from '../core';
-import { NOTICE_TYPES, PLACEMENT_TYPES } from '../constants/index';
+import classNames from 'classnames';
+import { prefix } from 'rsuite-utils/lib/utils';
 
+import Notification from '../core';
+import { NOTICE_TYPES, PLACEMENT_TYPES, namespace } from '../constants/index';
 
 let defaultPlacement = 'topRight';
 let defaultTop = 24;
 let defaultBottom = 24;
 let defaultDuration = 4500;
 let notityInstance = {};
+let defaultClassPrefix = `${namespace}-notification`;
+let getContainer;
 
-function getPlacementStyle(placement = defaultPlacement) {
+const addPrefix = name => prefix(defaultClassPrefix)(name);
+
+function getPlacementStyle(config) {
   let style = {};
   let className;
+  const placement = config.placement || defaultPlacement;
+  const top = config.top || defaultTop;
+  const bottom = config.bottom || defaultBottom;
+
   switch (placement) {
     case PLACEMENT_TYPES.TOPLEFT:
       style = {
-        top: defaultTop,
+        top,
         left: 24,
       };
-      className = 'rsuite-top-left';
+      className = addPrefix('top-left');
       break;
     case PLACEMENT_TYPES.TOPRIGHT:
       style = {
-        top: defaultTop,
+        top,
         right: 24,
       };
-      className = 'rsuite-top-right';
+      className = addPrefix('top-right');
       break;
     case PLACEMENT_TYPES.BOTTOMLEFT:
       style = {
-        bottom: defaultBottom,
+        bottom,
         left: 24,
       };
-      className = 'rsuite-bottom-left';
+      className = addPrefix('bottom-left');
       break;
     case PLACEMENT_TYPES.BOTTOMRIGHT:
       style = {
-        bottom: defaultTop,
+        bottom,
         right: 24,
       };
-      className = 'rsuite-bottom-right';
+      className = addPrefix('bottom-right');
       break;
     default:
       style = {
-        top: defaultTop,
+        top,
         left: 24,
       };
       break;
@@ -52,15 +61,18 @@ function getPlacementStyle(placement = defaultPlacement) {
   return { style, className };
 }
 
-function getInstance(placement = defaultPlacement) {
+function getInstance(config) {
+  const placement = config.placement || defaultPlacement;
   if (!notityInstance[placement]) {
     let className = {
-      'rsuite-notify': true,
-      [getPlacementStyle(placement).className]: true
-    }
+      [addPrefix('notify')]: true,
+      [getPlacementStyle(config).className]: true,
+    };
     notityInstance[placement] = Notification.newInstance({
-      style: getPlacementStyle(placement).style,
-      className: classnames(className),
+      style: getPlacementStyle(config).style,
+      className: classNames(className),
+      classPrefix: defaultClassPrefix,
+      getContainer,
     });
   }
   return notityInstance[placement];
@@ -68,12 +80,12 @@ function getInstance(placement = defaultPlacement) {
 
 /**
  *
- * @param {*} config : title,description,style,duration,placement,top, bottom, onClose,type, key
+ * @param {*} config: {} : title,description,style,duration,placement,top, bottom, onClose,type, key
  */
 function notice(config) {
   let duration;
-  let description = config.description
-  if(typeof description === 'function'){
+  let description = config.description;
+  if (typeof description === 'function') {
     description = description();
   }
   if (config.duration === undefined) {
@@ -82,34 +94,23 @@ function notice(config) {
     duration = config.duration;
   }
 
-  // if (config.top !== undefined) {
-  //   defaultTop = config.top;
-  // }
-
-  // if (config.bottom !== undefined) {
-  //   defaultBottom = config.bottom;
-  // }
-
-  // if (config.placement !== undefined) {
-  //   defaultPlacement = config.placement;
-  // }
-
   let content = (
     <div className="notify">
       <div className="title">{config.title}</div>
       <div className="description">{description}</div>
     </div>
   );
-  let instance = getInstance(config.placement);
+  let instance = getInstance(config);
   instance.notice({
     content,
     duration,
     closable: true,
     onClose: config.onClose,
     key: config.key,
-    type: config.type
+    type: config.type,
+    ...config,
   });
-};
+}
 
 export default {
   open(config) {
@@ -135,5 +136,37 @@ export default {
     if (notityInstance[defaultPlacement]) {
       notityInstance[defaultPlacement].remove(key);
     }
-  }
+  },
+  /**
+   * 全局配置方法
+   * @param {*} options{
+   *  top,
+   *  bottom,
+   *  classPrefix,
+   *  duration,
+   *  getContainer
+   * }
+   */
+  config(options) {
+    if (options.top !== undefined) {
+      defaultTop = options.top;
+      // 如果存在实例，在设置新的top值后，需要将实例置空
+      notityInstance = {};
+    }
+    if (options.bottom !== undefined) {
+      defaultBottom = options.bottom;
+      notityInstance = {};
+    }
+    if (options.duration !== undefined) {
+      defaultDuration = options.duration;
+    }
+
+    if (options.classPrefix !== undefined) {
+      defaultClassPrefix = options.classPrefix;
+    }
+
+    if (options.getContainer !== undefined) {
+      getContainer = options.getContainer;
+    }
+  },
 };

@@ -1,3 +1,4 @@
+export const namespace = 'rs';
 export const NOTICE_TYPES = {
   SUCCESS: 'success',
   ERROR: 'error',

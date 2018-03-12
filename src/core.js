@@ -1,49 +1,72 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 import ReactDOM from 'react-dom';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import classnames from 'classnames';
-import chain from './utils/createChainedFunction';
-// import Animate from 'rc-animate';
+import classNames from 'classnames';
+import Transition from 'rsuite-utils/lib/Animation/Transition';
+import { prefix, createChainedFunction } from 'rsuite-utils/lib/utils';
+import { namespace } from './constants/index';
 
-import Notice from './Notice';
+import Notice from './notice';
 
 let id = 0;
 const getUid = () => {
-  return `rsuite-noticition-${Date.now()}-${id++}`;
+  id += 1;
+  return `${namespace}-notification-${Date.now()}-${id}`;
 };
 
-const propTypes = {
-  animation: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  style: PropTypes.object
+type Props = {
+  className?: string,
+  classPrefix?: string,
+  style?: Object,
 };
 
-const defaultProps = {
-  animation: 'fade',
-  style: {
-    top: '5px',
-  }
+type State = {
+  notices: Array<any>,
 };
 
-class Notification extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      prefixCls: 'rsuite-notification',
-      notices: []
+class Notification extends React.Component<Props, State> {
+  static defaultProps = {
+    classPrefix: `${namespace}-notification`,
+    style: {
+      top: '5px',
+    },
+  };
+  static newInstance(properties?: Object) {
+    const { getContainer, ...props } = properties || {};
+    let div;
+    if (getContainer) {
+      div = getContainer();
+    } else {
+      div = document.createElement('div');
+      document.body && document.body.appendChild(div);
+    }
+
+    const notificationComponent =
+      ReactDOM.render(<Notification {...props} />, div) || null;
+
+    return {
+      notice(noticeProps: Object) {
+        notificationComponent.add(noticeProps);
+      },
+      remove(key: string) {
+        notificationComponent.remove(key);
+      },
+      component: notificationComponent,
+      destroy() {
+        ReactDOM.unmountComponentAtNode(div);
+        document.removeChild(div);
+      },
     };
   }
 
-  getTransitionName() {
-    const props = this.props;
-    let transitionName = props.transitionName;
-    if (!transitionName && props.animation) {
-      transitionName = `${this.state.prefixCls}-${props.animation}`;
-    }
-    return transitionName;
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      notices: [],
+    };
   }
 
-  add = (notice) => {
+  add = (notice: Object) => {
     const { notices } = this.state;
     let key;
     if (notice.key === undefined || notice.key === null) {
@@ -52,86 +75,54 @@ class Notification extends Component {
       key = notice.key;
     }
     notice.key = key;
-    if (!notices.filter(notice => notice.key === key).length) {
+    if (!notices.filter((n: Object) => n.key === key).length) {
       this.setState({
-        notices: notices.concat(notice)
+        notices: notices.concat(notice),
       });
     }
-  }
+  };
 
-  remove = (key) => {
-    // console.log(this.state.notices.filter(notice => notice.key !== key));
-    this.setState((prevState) => {
+  remove = (key: string) => {
+    this.setState((prevState: State) => {
       return {
-        notices: prevState.notices.filter(notice => notice.key !== key)
+        notices: prevState.notices.filter(notice => notice.key !== key),
       };
     });
-  }
+  };
+
+  addPrefix = (name: string) => prefix(this.props.classPrefix)(name);
 
   render() {
-    const { notices, prefixCls } = this.state;
-    const { className, style } = this.props;
+    const { notices } = this.state;
+    const { className, style, classPrefix } = this.props;
 
-    const noticeNodes = notices.map((notice) => {
-      return <Notice
-        prefixCls={this.state.prefixCls}
-        {...notice}
-        onClose={chain(this.remove.bind(null, notice.key), notice.onClose)}
-      />;
+    const noticeNodes = notices.map((notice: Object) => {
+      return (
+        <Notice
+          classPrefix={classPrefix}
+          {...notice}
+          onClose={createChainedFunction(
+            () => this.remove(notice.key),
+            notice.onClose,
+          )}
+        />
+      );
     });
 
-    const classNames = {
-      [prefixCls]: true,
-      [className]: !!className
-    };
-    const animateProps = {};
-    if (this.state.notices.length <= 1) {
-      animateProps.component = '';
-    }
-    const transitionName = `${this.state.prefixCls}-${this.props.animation}`;
+    const classes = classNames(classPrefix, className);
+
     return (
-      <div className={classnames(classNames)} style={style}>
-        <ReactCSSTransitionGroup
-          transitionName={transitionName}
-          transitionEnterTimeout={1000}
-          transitionLeaveTimeout={1000}
-        >
+      <Transition
+        exitedClassName={this.addPrefix('fade-leaved')}
+        enteredClassName={this.addPrefix('fade-entered')}
+        enteringClassName={this.addPrefix('fade-enter-active')}
+      >
+        <div className={classes} style={style}>
           {noticeNodes}
-        </ReactCSSTransitionGroup>
-      </div>
+        </div>
+      </Transition>
     );
   }
 }
-
-Notification.propTypes = propTypes;
-
-Notification.defaultProps = defaultProps;
-
-Notification.newInstance = function newNotificationInstance(properties) {
-  const { getContainer, ...props } = properties || {};
-  let div;
-  if (getContainer) {
-    div = getContainer();
-  } else {
-    div = document.createElement('div');
-    document.body.appendChild(div);
-  }
-
-  const notificationComponent = ReactDOM.render(<Notification {...props} />, div);
-
-  return {
-    notice(noticeProps) {
-      notificationComponent.add(noticeProps);
-    },
-    remove(key) {
-      notificationComponent.remove(key);
-    },
-    component: notificationComponent,
-    destroy() {
-      ReactDOM.unmountComponentAtNode(div);
-      document.removeChild(div);
-    }
-  };
-};
 
 export default Notification;

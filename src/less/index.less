@@ -1,37 +1,36 @@
-@color-notification-error-bg:#f2dede;
-@color-notification-error-font:#a94442;
-@color-notification-success-bg:#dff0d8;
-@color-notification-success-font:#3c763d;
-@color-notification-warning-bg:#fcf8e3;
-@color-notification-warning-font:#a66d3b;
-@color-notification-info-bg:#d9edf7;
-@color-notification-info-font:#31708f;
-@notificationPrefixCls: rsuite-notification;
+@color-notification-error-bg: #f2dede;
+@color-notification-error-font: #a94442;
+@color-notification-success-bg: #dff0d8;
+@color-notification-success-font: #3c763d;
+@color-notification-warning-bg: #fcf8e3;
+@color-notification-warning-font: #a66d3b;
+@color-notification-info-bg: #d9edf7;
+@color-notification-info-font: #31708f;
+@notificationPrefixCls: rs-notification;
 
 .@{notificationPrefixCls} {
   position: fixed;
   z-index: 9999;
-  &.rsuite-alert{
+  &-alert {
     left: 50%;
-    .@{notificationPrefixCls}-notice{
+    .@{notificationPrefixCls}-notice {
       right: 50%;
     }
   }
-  &.rsuite-notify{
-
+  &-notify {
   }
-  .notify{
+  .notify {
     width: 320px;
     text-align: left;
-    .title{
-      font-size:  16px;
+    .title {
+      font-size: 16px;
     }
-    .description{
+    .description {
       padding: 5px 0;
     }
   }
-  &-notice-wrapper{
-    text-align: center
+  &-notice-wrapper {
+    text-align: center;
   }
   &-notice {
     padding: 10px 20px;
@@ -42,7 +41,7 @@
     line-height: 1.5;
     position: relative;
     margin: 5px;
-    &-content{
+    &-content {
       padding: 0 10px 0 5px;
     }
 
@@ -61,7 +60,7 @@
       line-height: 1;
       text-shadow: 0 1px 0 #fff;
       filter: alpha(opacity=20);
-      opacity: .2;
+      opacity: 0.2;
       text-decoration: none;
 
       &-x:after {
@@ -69,48 +68,45 @@
       }
     }
   }
-    &-info{
-        background-color: @color-notification-info-bg ;
-        .@{notificationPrefixCls}-notice-content{
-          color: @color-notification-info-font ;
-        }
+  &-info {
+    background-color: @color-notification-info-bg;
+    .@{notificationPrefixCls}-notice-content {
+      color: @color-notification-info-font;
     }
+  }
 
+  &-error {
+    background-color: @color-notification-error-bg;
+    .@{notificationPrefixCls}-notice-content {
+      color: @color-notification-error-font;
+    }
+  }
 
-    &-error{
-        background-color: @color-notification-error-bg;
-        .@{notificationPrefixCls}-notice-content{
-          color: @color-notification-error-font;
-        }
+  &-success {
+    background-color: @color-notification-success-bg;
+    .@{notificationPrefixCls}-notice-content {
+      color: @color-notification-success-font;
     }
+  }
 
-    &-success{
-        background-color: @color-notification-success-bg ;
-        .@{notificationPrefixCls}-notice-content{
-          color: @color-notification-success-font;
-        }
+  &-warning {
+    background-color: @color-notification-warning-bg;
+    .@{notificationPrefixCls}-notice-content {
+      color: @color-notification-warning-font;
     }
-
-    &-warning{
-        background-color: @color-notification-warning-bg;
-        .@{notificationPrefixCls}-notice-content{
-          color: @color-notification-warning-font;
-        }
-    }
-    &-fade-enter{
-      opacity: 0.01
-    }
-    &-fade-enter-active{
-      opacity: 1;
-      transition: opacity 200ms ease-in;
-    }
-    &-fade-leave{
-      opacity: 1;
-    }
-    &-fade-leave-active {
-      opacity: 0.01;
-      transition: opacity 200ms ease-in;
-    }
+  }
+  &-fade-enter {
+    opacity: 0.01;
+  }
+  &-fade-enter-active {
+    opacity: 1;
+    transition: opacity 200ms ease-in;
+  }
+  &-fade-leave {
+    opacity: 1;
+  }
+  &-fade-leave-active {
+    opacity: 0.01;
+    transition: opacity 200ms ease-in;
+  }
 }
-
-
