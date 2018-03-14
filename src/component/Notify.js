@@ -95,9 +95,9 @@ function notice(config) {
   }
 
   let content = (
-    <div className="notify">
-      <div className="title">{config.title}</div>
-      <div className="description">{description}</div>
+    <div className={addPrefix('content')}>
+      <div className={addPrefix('title')}>{config.title}</div>
+      <div className={addPrefix('description')}>{description}</div>
     </div>
   );
   let instance = getInstance(config);
