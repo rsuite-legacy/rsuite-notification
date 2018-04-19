@@ -55,13 +55,14 @@ class Notice extends React.Component<Props> {
       type = '',
     } = this.props;
     const noticeClass = this.addPrefix('notice');
-    const classes = classNames(noticeClass, className, {
+    const wrapperClass = classNames(className, `${noticeClass}-wrapper`);
+    const classes = classNames(noticeClass, {
       [this.addPrefix('notice-closable')]: closable,
       [`${classPrefix}-${type}`]: !!type,
     });
 
     return (
-      <div className={`${noticeClass}-wrapper`}>
+      <div className={wrapperClass}>
         <div className={classes} style={style}>
           <div className={`${noticeClass}-content`}>{content}</div>
           {closable && (

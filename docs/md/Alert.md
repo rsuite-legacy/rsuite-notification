@@ -3,7 +3,7 @@
 ```js
 // 自定义配置，全局有效
 Alert.config({
-  duration: 5000,
+  duration: 50000,
 });
 
 class AlertDemo extends React.Component {

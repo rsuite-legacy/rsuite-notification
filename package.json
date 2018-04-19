@@ -55,10 +55,10 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "dom-lib": "0.2.6",
-    "prop-types": "^15.5.10",
-    "rsuite-utils": "^1.0.0-next.8"
+    "prop-types": "^15.5.10"
   },
   "peerDependencies": {
+    "rsuite-utils": "^1.0.0",
     "react": "^0.14.9 || >=15.3.0",
     "react-dom": ">=0.14.0"
   },
