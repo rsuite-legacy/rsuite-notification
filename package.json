@@ -1,6 +1,6 @@
 {
   "name": "rsuite-notification",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Notification component of React",
   "main": "lib/index.js",
   "directories": {
@@ -53,9 +53,7 @@
     "lib"
   ],
   "dependencies": {
-    "classnames": "^2.2.5",
-    "dom-lib": "0.2.6",
-    "prop-types": "^15.5.10"
+    "classnames": "^2.2.5"
   },
   "peerDependencies": {
     "rsuite-utils": "^1.0.0",
