@@ -19,14 +19,14 @@ describe(' Notify Component', () => {
       key: 1
     });
 
-    expect(document.querySelectorAll('.rsuite-notification-notice').length).toBe(2);
+    expect(document.querySelectorAll('.rs-notification-notice').length).toBe(2);
 
     Notify.remove(0);
     await delay(1000);
-    expect(document.querySelectorAll('.rsuite-notification-notice').length).toBe(1);
+    expect(document.querySelectorAll('.rs-notification-notice').length).toBe(1);
     Notify.remove(1);
     await delay(1000);
-    expect(document.querySelectorAll('.rsuite-notification-notice').length).toBe(0);
+    expect(document.querySelectorAll('.rs-notification-notice').length).toBe(0);
   });
 
   it('success notify should be render', async () => {
@@ -36,11 +36,11 @@ describe(' Notify Component', () => {
       duration: 0,
       key: 0
     });
-    expect(document.querySelectorAll('.rsuite-notification-success').length).toBe(1);
+    expect(document.querySelectorAll('.rs-notification-success').length).toBe(1);
 
     Notify.remove(0);
     await delay(1000);
-    expect(document.querySelectorAll('.rsuite-notification-success').length).toBe(0);
+    expect(document.querySelectorAll('.rs-notification-success').length).toBe(0);
   });
 
   it('success notify should be render, after 2s, it is gone', async () => {
@@ -50,10 +50,10 @@ describe(' Notify Component', () => {
       duration: 2,
       key: 0
     });
-    expect(document.querySelectorAll('.rsuite-notification-success').length).toBe(1);
+    expect(document.querySelectorAll('.rs-notification-success').length).toBe(1);
 
     await delay(3000);
-    expect(document.querySelectorAll('.rsuite-notification-success').length).toBe(0);
+    expect(document.querySelectorAll('.rs-notification-success').length).toBe(0);
   });
 
   it('error notify should be render', async () => {
@@ -63,11 +63,11 @@ describe(' Notify Component', () => {
       duration: 0,
       key: 0
     });
-    expect(document.querySelectorAll('.rsuite-notification-error').length).toBe(1);
+    expect(document.querySelectorAll('.rs-notification-error').length).toBe(1);
 
     Notify.remove(0);
     await delay(1000);
-    expect(document.querySelectorAll('.rsuite-notification-error').length).toBe(0);
+    expect(document.querySelectorAll('.rs-notification-error').length).toBe(0);
   });
 
   it('info notify should be render', async () => {
@@ -77,11 +77,11 @@ describe(' Notify Component', () => {
       duration: 0,
       key: 0
     });
-    expect(document.querySelectorAll('.rsuite-notification-info').length).toBe(1);
+    expect(document.querySelectorAll('.rs-notification-info').length).toBe(1);
 
     Notify.remove(0);
     await delay(1000);
-    expect(document.querySelectorAll('.rsuite-notification-info').length).toBe(0);
+    expect(document.querySelectorAll('.rs-notification-info').length).toBe(0);
   });
 
   it('warning notify should be render', async () => {
@@ -91,11 +91,11 @@ describe(' Notify Component', () => {
       duration: 0,
       key: 0
     });
-    expect(document.querySelectorAll('.rsuite-notification-warning').length).toBe(1);
+    expect(document.querySelectorAll('.rs-notification-warning').length).toBe(1);
 
     Notify.remove(0);
     await delay(1000);
-    expect(document.querySelectorAll('.rsuite-notification-warning').length).toBe(0);
+    expect(document.querySelectorAll('.rs-notification-warning').length).toBe(0);
   });
 
 
