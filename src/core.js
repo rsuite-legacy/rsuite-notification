@@ -34,11 +34,11 @@ class Notification extends React.Component<Props, State> {
   };
   static newInstance(properties?: Object) {
     const { getContainer, ...props } = properties || {};
-    let div;
+    const div = document.createElement('div');
     if (getContainer) {
-      div = getContainer();
+      const root = getContainer();
+      root.appendChild(div);
     } else {
-      div = document.createElement('div');
       document.body && document.body.appendChild(div);
     }
 
@@ -67,7 +67,6 @@ class Notification extends React.Component<Props, State> {
       notices: [],
     };
   }
-
 
   add = (notice: Object) => {
     const { notices } = this.state;
@@ -127,7 +126,10 @@ class Notification extends React.Component<Props, State> {
           key={notice.key}
           in={notice.animated}
           exitedClassName={this.addPrefix('fade-exited')}
-          exitingClassName={this.addPrefix(['fade-entered', 'fade-leave-active'])}
+          exitingClassName={this.addPrefix([
+            'fade-entered',
+            'fade-leave-active',
+          ])}
           enteringClassName={this.addPrefix('fade-entering')}
           enteredClassName={this.addPrefix('fade-entered')}
           timeout={300}
