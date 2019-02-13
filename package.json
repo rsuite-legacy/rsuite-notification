@@ -1,6 +1,6 @@
 {
   "name": "rsuite-notification",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Notification component of React",
   "main": "lib/index.js",
   "directories": {
