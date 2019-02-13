@@ -32,7 +32,8 @@ class Notification extends React.Component<Props, State> {
       top: '5px',
     },
   };
-  static newInstance(properties?: Object) {
+
+  static newInstance(properties?: Object, callback?: Object => void) {
     const { getContainer, ...props } = properties || {};
     const div = document.createElement('div');
     if (getContainer) {
@@ -41,23 +42,29 @@ class Notification extends React.Component<Props, State> {
     } else {
       document.body && document.body.appendChild(div);
     }
+    let called = false;
 
-    const notificationComponent =
-      ReactDOM.render(<Notification {...props} />, div) || null;
+    function ref(notification) {
+      if (called) {
+        return;
+      }
+      called = true;
+      callback({
+        notice(noticeProps: Object) {
+          notification.add(noticeProps);
+        },
+        remove(key: string) {
+          notification.remove(key);
+        },
+        component: notification,
+        destroy() {
+          ReactDOM.unmountComponentAtNode(div);
+          document.removeChild(div);
+        },
+      });
+    }
 
-    return {
-      notice(noticeProps: Object) {
-        notificationComponent.add(noticeProps);
-      },
-      remove(key: string) {
-        notificationComponent.remove(key);
-      },
-      component: notificationComponent,
-      destroy() {
-        ReactDOM.unmountComponentAtNode(div);
-        document.removeChild(div);
-      },
-    };
+    ReactDOM.render(<Notification {...props} ref={ref} />, div);
   }
 
   constructor(props: Props) {

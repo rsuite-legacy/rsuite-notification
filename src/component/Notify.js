@@ -61,21 +61,20 @@ function getPlacementStyle(config) {
   return { style, className };
 }
 
-function getInstance(config) {
-  const placement = config.placement || defaultPlacement;
-  if (!notityInstance[placement]) {
-    let className = {
-      [addPrefix('notify')]: true,
-      [getPlacementStyle(config).className]: true,
-    };
-    notityInstance[placement] = Notification.newInstance({
+function getInstance(config, callback) {
+  let className = {
+    [addPrefix('notify')]: true,
+    [getPlacementStyle(config).className]: true,
+  };
+  Notification.newInstance(
+    {
       style: getPlacementStyle(config).style,
       className: classNames(className),
       classPrefix: defaultClassPrefix,
       getContainer,
-    });
-  }
-  return notityInstance[placement];
+    },
+    callback,
+  );
 }
 
 /**
@@ -85,6 +84,8 @@ function getInstance(config) {
 function notice(config) {
   let duration;
   let description = config.description;
+  const placement = config.placement || defaultPlacement;
+
   if (typeof description === 'function') {
     description = description();
   }
@@ -100,8 +101,8 @@ function notice(config) {
       <div className={addPrefix('description')}>{description}</div>
     </div>
   );
-  let instance = getInstance(config);
-  instance.notice({
+
+  const noticeProps = {
     content,
     duration,
     closable: true,
@@ -109,7 +110,17 @@ function notice(config) {
     key: config.key,
     type: config.type,
     ...config,
-  });
+  };
+
+  const instance = notityInstance[placement];
+  if (!instance) {
+    getInstance(config, (notificationInstance) => {
+      notityInstance[placement] = notificationInstance;
+      notificationInstance.notice(noticeProps);
+    });
+  } else {
+    instance.notice(noticeProps);
+  }
 }
 
 export default {
@@ -137,6 +148,7 @@ export default {
       notityInstance[defaultPlacement].remove(key);
     }
   },
+
   /**
    * 全局配置方法
    * @param {*} options{

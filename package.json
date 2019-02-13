@@ -122,5 +122,10 @@
     "uuid": "^2.0.3",
     "webpack": "^3.0.0",
     "webpack-dev-server": "^2.2.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

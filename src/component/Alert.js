@@ -10,31 +10,40 @@ let getContainer;
 
 const addPrefix = name => prefix(defaultClassPrefix)(name);
 
-function getInstance(instance) {
-  return (
-    instance ||
-    Notification.newInstance({
+function getInstance(callback) {
+  Notification.newInstance(
+    {
       style: { top: defaultTop },
       duration: defaultDuration,
       className: addPrefix('alert'),
       classPrefix: defaultClassPrefix,
       getContainer,
-    })
+    },
+    callback,
   );
 }
 
 function notice(content, duration = defaultDuration, onClose, type) {
-  alertInstance = getInstance(alertInstance);
   if (typeof content === 'function') {
     content = content();
   }
-  alertInstance.notice({
+
+  const noticePorps = {
     content,
     duration,
     onClose,
     type,
     closable: true,
-  });
+  };
+
+  if (!alertInstance) {
+    getInstance((notificationInstance) => {
+      alertInstance = notificationInstance;
+      notificationInstance.notice(noticePorps);
+    });
+  } else {
+    alertInstance.notice(noticePorps);
+  }
 }
 
 export default {

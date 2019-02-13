@@ -48,6 +48,15 @@ class NotifyDemo extends React.Component {
     });
   }
 
+  componentDidMount(){
+    console.log('didMount')
+    Notify.warning({
+      title: 'Warning',
+      description: ' messages  messages  messages messages',
+      onClose: this.handleOnClose
+    });
+  }
+
   render() {
     return (
       <div>
